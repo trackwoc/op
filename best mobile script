@@ -794,7 +794,7 @@ end)
 
 local testSection = AimingTab:CreateSector("Camlock", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
 
-testSection:AddButton("Camlock (X)", function(IhateGayPeople)
+testSection:AddButton("Camlock (E)", function(IhateGayPeople)
 -- [ Variables (Global Environmnet) ]
 
 --// Aimlock Settings
@@ -804,7 +804,7 @@ getgenv().AimRadius = 50 -- How far away from someones character you want to loc
 
 --// Prediction
 getgenv().PredictionVelocity =  0.11934 -- (8.1)
-getgenv().AimKey = Enum.KeyCode.X
+getgenv().AimKey = Enum.KeyCode.E
 getgenv().Hold = false -- Rather or not you have to hold AimKey for it to lock
 getgenv().AntiBypass = false
 getgenv().BypassKey = Enum.KeyCode.Q
