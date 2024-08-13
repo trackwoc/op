@@ -1,0 +1,3109 @@
+-- // Made By Trackwox
+-- // Token.cc
+-- // v2
+
+if getgenv().Intro == true then
+local Intro = Instance.new("ScreenGui")
+local bluebackground = Instance.new("Frame")
+local ultimateadminlogo = Instance.new("TextLabel")
+local line = Instance.new("Frame")
+local credit = Instance.new("TextLabel")
+local usetutorial = Instance.new("TextButton")
+local ImageLabel = Instance.new("ImageLabel")
+--Properties:
+Intro.Name = "Intro"
+Intro.Parent = game.CoreGui
+
+
+ImageLabel.Parent = Intro
+ImageLabel.BackgroundColor3 = Color3.new(578, 145, 128)
+ImageLabel.Position = UDim2.new(-0.0340000018, 0, -1000, 0)
+ImageLabel.Size = UDim2.new(0, 3000, 0, 2000)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=4713289603"
+
+ultimateadminlogo.Name = "ultimateadminlogo"
+ultimateadminlogo.Parent = Intro
+ultimateadminlogo.BackgroundColor3 = Color3.new(1, 1, 1)
+ultimateadminlogo.BackgroundTransparency = 1
+ultimateadminlogo.BorderSizePixel = 5
+ultimateadminlogo.Position = UDim2.new(0.232999995, 0, -50, 0)
+ultimateadminlogo.Size = UDim2.new(0, 813, 0, 227)
+ultimateadminlogo.Text = "Token.cc"
+ultimateadminlogo.TextColor3 = Color3.new(0, 0, 0)
+ultimateadminlogo.TextScaled = true
+ultimateadminlogo.TextSize = 14
+ultimateadminlogo.TextStrokeTransparency = 0
+ultimateadminlogo.TextWrapped = true
+
+
+usetutorial.Name = "usetutorial"
+usetutorial.Parent = Intro
+usetutorial.BackgroundColor3 = Color3.new(1, 1, 1)
+usetutorial.BackgroundTransparency = 1
+usetutorial.Position = UDim2.new(0.312999994, 0, 3, 0)
+usetutorial.Size = UDim2.new(0, 546, 0, 56)
+usetutorial.Font = Enum.Font.SourceSans
+usetutorial.Text = "Enjoy Locking With Token.cc!"
+usetutorial.TextColor3 = Color3.new(0, 0, 0)
+usetutorial.TextScaled = true
+usetutorial.TextSize = 14
+usetutorial.TextWrapped = true
+
+
+-- Scripts:
+
+ImageLabel:TweenPosition(UDim2.new(-0.034, 0,-0.039, 0), 'In', 'Bounce', 3, true)
+wait(3)
+ultimateadminlogo:TweenPosition(UDim2.new(0.233, 0,0.361, 0), 'In', 'Bounce', 1, true)
+wait(1)
+usetutorial:TweenPosition(UDim2.new(0.313, 0,0.556, 0), 'In', 'Bounce', 1, true)
+wait(3)
+ultimateadminlogo:TweenPosition(UDim2.new(0.233, 0,-50, 0), 'Out', 'Linear', 1, true)
+wait(0.1)
+usetutorial:TweenPosition(UDim2.new(0.313, 0,3, 0), 'Out', 'Linear', 0.5, true)
+wait(1)
+ImageLabel:TweenPosition(UDim2.new(-0.034, 0,-1000, 0), 'Out', 'Bounce', 1, true)
+end
+
+        -- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextButton = Instance.new("TextButton")
+local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+Frame.BackgroundTransparency = 0
+Frame.Position = UDim2.new(0.858712733, 0, 0.0237762257, 0)
+Frame.Size = UDim2.new(0, 100, 0, 50)
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.BackgroundTransparency = 1.000
+TextButton.Size = UDim2.new(1, 0, 1, 0)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Toggle"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 30
+TextButton.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextStrokeTransparency = 0.000
+TextButton.TextWrapped = true
+TextButton.MouseButton1Down:Connect(function()
+	game:GetService("VirtualInputManager"):SendKeyEvent(true, "V" , false , game)
+end)
+
+UITextSizeConstraint.Parent = TextButton
+UITextSizeConstraint.MaxTextSize = 30
+
+local player = game.Players.LocalPlayer
+
+-- Function to show the GUI when the character respawns
+local function onCharacterAdded(character)
+    ScreenGui.Parent = player.PlayerGui
+end
+
+-- Function to connect character respawn event
+local function connectCharacterAdded()
+    player.CharacterAdded:Connect(onCharacterAdded)
+end
+
+-- Connect the CharacterAdded event
+connectCharacterAdded()
+
+-- Keep the GUI visible when the character dies
+player.CharacterRemoving:Connect(function()
+    ScreenGui.Parent = nil
+end) 
+
+local CursorPath = Instance.new("ScreenGui")
+local Swastika = Instance.new("TextLabel")
+
+
+CursorPath.Name = "CursorPath"
+CursorPath.Parent = game.CoreGui
+CursorPath.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Swastika.Name = "Swastika"
+Swastika.Parent = CursorPath
+Swastika.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Swastika.BackgroundTransparency = 1.000
+Swastika.BorderSizePixel = 2
+Swastika.Position = UDim2.new(0, 0, 0, 0)
+Swastika.Size = UDim2.new(0, 93, 0, 84)
+Swastika.Font = Enum.Font.SourceSans
+Swastika.Text = "卍"
+Swastika.TextColor3 = Color3.fromRGB(0, 0, 0)
+Swastika.TextSize = 46.000
+Swastika.TextTransparency =  0
+Swastika.Rotation = 45 
+Swastika.Visible = false
+
+ local Settings = { 
+    SilentAim = { 
+        Key = "C",
+        AimAt = "HumanoidRootPart",
+        PredictionAmount = 0.140,
+        HitChance = 100,
+        Resolver = false, -- // Prime Resolver Method Hes A W
+
+        FOVEnabled = false,
+        FOVShow = false,
+        FOVSize = 119,
+
+        Enabled = false,
+        KeyToLockOn = false
+    }
+}
+
+
+
+
+
+
+local localPlayer = game:GetService("Players").LocalPlayer
+local currentCamera = game:GetService("Workspace").CurrentCamera
+local guiService = game:GetService("GuiService")
+local runService = game:GetService("RunService")
+--// Variables (Service)
+
+local Players = game:GetService("Players")
+local RS = game:GetService("RunService")
+local WS = game:GetService("Workspace")
+local GS = game:GetService("GuiService")
+local SG = game:GetService("StarterGui")
+local UIS = game:GetService("UserInputService")
+
+--// Variables (regular)
+
+local LP = Players.LocalPlayer
+local Mouse = LP:GetMouse()
+local Camera = WS.CurrentCamera
+local GetGuiInset = game:GetService("GuiService"):GetGuiInset().Y
+
+
+local userInput = game:GetService('UserInputService')
+local runService = game:GetService('RunService')
+
+
+local getGuiInset = guiService.GetGuiInset
+local Inset = game:GetService("GuiService"):GetGuiInset().Y
+local mouse = localPlayer:GetMouse()
+local Mouse = localPlayer:GetMouse()
+
+local silentAimed = false
+local silentVictim
+local victimMan
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Filled = false
+FOVCircle.Transparency = 1
+FOVCircle.Thickness = 2
+FOVCircle.Color = Color3.fromRGB(255, 255, 255)
+function updateFOV()
+    if (FOVCircle) then
+        if (Settings.SilentAim.FOVEnabled) then
+            FOVCircle.Radius = Settings.SilentAim.FOVSize * 2
+            FOVCircle.Visible = Settings.SilentAim.FOVShow
+            FOVCircle.Position = Vector2.new(Mouse.X, Mouse.Y + Inset)
+
+            return FOVCircle
+        elseif (not Settings.SilentAim.FOVEnabled) then
+            FOVCircle.Visible = false
+        end
+    end
+end
+
+local CalculateChance = function(Percentage)
+    Percentage = math.floor(Percentage)
+    local chance = math.floor(Random.new().NextNumber(Random.new(), 0, 1) * 100) / 100
+
+    return chance < Percentage / 100
+end
+
+
+
+runService.RenderStepped:Connect(function()
+    updateFOV()
+    victimMan = getClosestPlayerToCursor()
+end)
+
+function getClosestPlayerToCursor()
+    local closestPlayer
+    local shortestDistance = math.huge
+    local HitChance = CalculateChance(Settings.SilentAim.HitChance)
+
+    if not HitChance then
+        return nil
+    end
+
+
+    for i, v in pairs(game.Players:GetPlayers()) do
+        if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild(Settings.SilentAim.AimAt) then
+            local pos = currentCamera:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+            local magnitude = (Vector2.new(pos.X, pos.Y) - Vector2.new(mouse.X, mouse.Y)).magnitude
+            
+            if (Settings.SilentAim.FOVEnabled == true) then
+                if (FOVCircle.Radius > magnitude and magnitude < shortestDistance) then
+                    closestPlayer = v
+                    shortestDistance = magnitude
+                end
+            else
+                if (magnitude < shortestDistance) then
+                    closestPlayer = v
+                    shortestDistance = magnitude
+                end
+            end
+        end
+    end
+    return closestPlayer
+end
+
+function sendNotification(text)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Token.cc",
+        Text = text,
+        Duration = 5
+    })
+end
+
+
+Mouse.KeyDown:Connect(function(k)
+    local actualKey = Settings.SilentAim.Key:lower()
+    if (k == actualKey) then
+        if (Settings.SilentAim.KeyToLockOn == false) then
+            return
+        end
+        if (Settings.SilentAim.Enabled) then
+            silentAimed = not silentAimed
+                
+            if silentAimed then
+                silentVictim = getClosestPlayerToCursor()
+                sendNotification("Locked onto: " .. tostring(silentVictim.Character.Humanoid.DisplayName))
+            elseif not silentAimed and silentVictim ~= nil then
+                silentVictim = nil
+
+                sendNotification('Unlocked!')
+            end
+        end
+    end
+end)
+
+if Settings.SilentAim.Resolver == true then
+game:GetService("RunService").Heartbeat:Connect(function()
+    pcall(function()
+        for i,v in pairs(game.Players:GetChildren()) do
+            if v.Name ~= game.Players.LocalPlayer.Name then
+                local hrp = v.Character.HumanoidRootPart
+                hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
+                hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)   
+            end
+        end
+    end)
+end)
+end
+
+local mt = getrawmetatable(game)
+local old = mt.__namecall
+setreadonly(mt, false)
+mt.__namecall = newcclosure(function(...)
+    local args = {...}
+
+    if Settings.SilentAim.Enabled and Settings.SilentAim.KeyToLockOn and silentAimed and getnamecallmethod() == "FireServer" and args[2] == "UpdateMousePos" then
+        args[3] = silentVictim.Character[Settings.SilentAim.AimAt].Position+(silentVictim.Character[Settings.SilentAim.AimAt].Velocity*Settings.SilentAim.PredictionAmount / 10 )
+        return old(unpack(args))
+    elseif Settings.SilentAim.Enabled and not Settings.SilentAim.KeyToLockOn and getnamecallmethod() == "FireServer" and args[2] == "UpdateMousePos" then
+        args[3] = victimMan.Character[Settings.SilentAim.AimAt].Position+(victimMan.Character[Settings.SilentAim.AimAt].Velocity*Settings.SilentAim.PredictionAmount / 10 )
+        return old(unpack(args))
+    end
+
+    return old(...)
+end)
+
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/kpLzpNXc"))() --you can go into the github link and copy all of it and modify it for yourself.
+local Window = Library:CreateWindow("Token.cc", Vector2.new(460, 460), Enum.KeyCode.V) --you can change your UI keybind
+local LocalPlayer = game.Players.LocalPlayer
+local LocalMouse = LocalPlayer:GetMouse() 
+
+local AimingTab = Window:CreateTab("Aiming") --you can rename this tab to whatever you want --you can also change the tabs code, for example "AimingTab" can be changed to "FunnyCoolTab" etc.
+local gayTab = Window:CreateTab("Local") --you can rename this tab to whatever you want --you can also change the tabs code, for example "AimingTab" can be changed to "FunnyCoolTab" etc.
+local VisTab = Window:CreateTab("Visual")
+local aTab = Window:CreateTab("Animation")
+local cTab = Window:CreateTab("Credit")
+local bTab = Window:CreateTab("Config")
+
+local testSection = AimingTab:CreateSector("Aimlock", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddButton("Load Aimlock", function(IhateGayPeople)
+
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+local Notify = AkaliNotif.Notify;
+
+
+-- Toggle
+getgenv().Target = true
+-- Configuration
+getgenv().Key = Enum.KeyCode.Q
+getgenv().Prediction = 0.14378
+getgenv().ChatMode = false
+getgenv().NotifMode = true
+    getgenv().PartMode = true
+    getgenv().Partz = "HumanoidRootPart"
+getgenv().AutoPrediction = false
+getgenv().JumpOffset = 0
+getgenv().Highlights = false
+getgenv().Outline = Color3.fromRGB(251,255,255)
+getgenv().Fill = Color3.fromRGB(251,255,255)
+getgenv().TargetStrafe = false
+getgenv().StrafeSpeed = 10
+getgenv().StrafeRadius = 8
+getgenv().StrafeHeight = 2
+getgenv().LookAt = false
+getgenv().ViewAt = false
+getgenv().AirshotFunccc = false
+getgenv().AirshotPart = "LowerTorso"
+getgenv().UseCam = false
+getgenv().Tracer = false
+getgenv().Resolver = false
+--
+
+local Tool = Instance.new("Tool")
+Tool.RequiresHandle = false
+Tool.Name = "Gay Tool"
+Tool.Parent = game.Players.LocalPlayer.Backpack
+
+local player = game.Players.LocalPlayer
+
+local function connectCharacterAdded()
+    player.CharacterAdded:Connect(onCharacterAdded)
+end
+
+connectCharacterAdded()
+
+player.CharacterRemoving:Connect(function()
+    Tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+
+    _G.Types = {
+        Ball = Enum.PartType.Ball,
+        Block = Enum.PartType.Block, 
+        Cylinder = Enum.PartType.Cylinder
+    }
+ 
+    --variables                 
+    	local Tracer = Instance.new("Part", game.Workspace)
+    Tracer.Name = "Token.cc tap"	
+    Tracer.Anchored = true		
+    Tracer.CanCollide = false
+    Tracer.Transparency = 0.3
+    Tracer.Parent = game.Workspace	
+    Tracer.Shape = _G.Types.Ball
+    Tracer.Material = Enum.Material.ForceField
+    Tracer.Size = Vector3.new(11,11,11)
+    Tracer.Color = Color3.fromRGB(251,255,255)
+ 
+ 
+    --
+    local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+local Inset = game:GetService("GuiService"):GetGuiInset().Y
+local Runserv = game:GetService("RunService")
+local Line = Drawing.new("Line")
+ 
+circle = Drawing.new("Circle")
+circle.Color = Color3.fromRGB(32, 28, 52)
+circle.Thickness = 0
+circle.NumSides = 25
+circle.Radius = 120
+circle.Thickness = 0
+circle.Transparency = 0.7
+circle.Visible = false
+circle.Filled = false
+ 
+ 
+ 
+
+Runserv.RenderStepped:Connect(function()
+    circle.Position = Vector2.new(mouse.X,mouse.Y+35)
+end)
+ 
+    	local guimain = Instance.new("Folder", game.CoreGui)
+    	local CC = game:GetService"Workspace".CurrentCamera
+    local LocalMouse = game.Players.LocalPlayer:GetMouse()
+    	local Locking = false
+ 
+ 
+    --
+    if getgenv().valiansh == true then
+                        game.StarterGui:SetCore("SendNotification", {
+                   Title = "",
+                   Text = "Already Loaded!",
+                   Duration = 5
+ 
+                   })
+        return
+    end
+ 
+    getgenv().valiansh = true
+ 
+ local LocalHL = Instance.new("Highlight")
+        Tool.Activated:Connect(function()
+               if getgenv().Target == true then
+               Locking = not Locking
+ 
+               if Locking then
+               Plr =  getClosestPlayerToCursor()
+                        if getgenv().Highlights == true then
+                      LocalHL.Parent = Plr.Character
+                       LocalHL.FillColor = getgenv().Fill
+                       LocalHL.OutlineColor = getgenv().Outline
+                   else
+                       LocalHL.Parent = game.CoreGui
+                   end
+                   
+                if getgenv().ChatMode then
+        local A_1 = "Locked To: "..tostring(Plr.Character.Humanoid.DisplayName) local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) 
+        	end	
+               if getgenv().NotifMode then
+ 
+				Notify({
+					Description = "Locked To: "..tostring(Plr.Character.Humanoid.DisplayName);
+					Title = "";
+					Duration = 5;
+					});  
+ 
+ 
+ 
+    end
+    elseif not Locking then
+         if getgenv().ChatMode then
+        local A_1 = "Unlocked" local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) 
+        	end	
+        if getgenv().Higlights == true then
+        LocalHL.Parent = game.CoreGui 
+        end
+        
+        if getgenv().NotifMode then
+			Notify({
+				Description = "Unlocked";
+				Title = "";
+				Duration = 5;
+				});  
+           elseif getgenv().Target == false then
+			Notify({
+				Description = "Target isn't enabled";
+				Title = "";
+				Duration = 5;
+				}); 
+ 
+               end
+ 
+ 
+ end     end   
+end)
+ 
+	function getClosestPlayerToCursor()
+		local closestPlayer
+		local shortestDistance = circle.Radius
+ 
+		for i, v in pairs(game.Players:GetPlayers()) do
+			if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("LowerTorso") then
+				local pos = CC:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+				local magnitude = (Vector2.new(pos.X, pos.Y) - Vector2.new(LocalMouse.X, LocalMouse.Y)).magnitude
+				if magnitude < shortestDistance then
+					closestPlayer = v
+					shortestDistance = magnitude
+				end
+			end
+		end
+		return closestPlayer
+	end
+--
+if getgenv().PartMode then
+	game:GetService"RunService".Stepped:connect(function()
+		if Locking and Plr.Character and Plr.Character:FindFirstChild("LowerTorso") then
+			Tracer.CFrame = CFrame.new(Plr.Character.LowerTorso.Position+(Plr.Character.LowerTorso.Velocity*Prediction))
+		else
+			Tracer.CFrame = CFrame.new(0, 9999, 0)
+ 
+		end
+	end)
+end
+
+if getgenv().AirshotFunccc == true then
+
+            if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
+                getgenv().Partz = getgenv().AirshotPart
+            else
+                Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old,new)
+                    if new == Enum.HumanoidStateType.Freefall then
+                    getgenv().Partz = getgenv().AirshotPart
+                    else
+                        getgenv().Partz = getgenv().Partz
+                    end
+                end)
+            end
+end
+
+local JumpOffsetNoWay = 0
+
+game:GetService("RunService").Stepped:connect(function()
+if Plr.Character.Humanoid:GetState() == Enum.HumanoidStateType.Freefall then
+            getgenv().JumpOffset = JumpOffsetNoWay
+        else
+            getgenv().JumpOffset = 0
+        end 
+    
+if getgenv().LookAt == true and Locking then
+local sex = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+                    local Char = game.Players.LocalPlayer.Character
+                local PrimaryPartOfChar = game.Players.LocalPlayer.Character.PrimaryPart
+                local NearestChar = Plr.Character
+                local NearestRoot = Plr.Character.HumanoidRootPart
+                local NearestPos = CFrame.new(PrimaryPartOfChar.Position, Vector3.new(NearestRoot.Position.X, sex.Position.Y, NearestRoot.Position.Z))
+                Char:SetPrimaryPartCFrame(NearestPos)
+                
+    end
+    
+
+
+if getgenv().TargetStrafe == true and Locking then
+   local lp = game.Players.LocalPlayer.Character
+   local targpos = Plr.Character.HumanoidRootPart.Position
+         lp:SetPrimaryPartCFrame(CFrame.new(targpos+Vector3.new(math.cos(tick()*getgenv().StrafeSpeed)*getgenv().StrafeRadius,getgenv().StrafeHeight,math.sin(tick()*getgenv().StrafeSpeed)*getgenv().StrafeRadius)))
+         
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position, Vector3.new(targpos.X,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position.Y,targpos.Z))
+        game:GetService("Players").LocalPlayer.Character.Humanoid.AutoRotate = false
+    else
+        game:GetService("Players").LocalPlayer.Character.Humanoid.AutoRotate = true
+     end
+end)
+
+function calculateVelocity(initialPos, finalPos, timeInterval)
+    local displacement = finalPos - initialPos
+    local velocity = displacement / timeInterval
+    return velocity
+    end
+   
+ 
+    game:GetService('RunService').RenderStepped:connect(function(deltaTime)
+    if getgenv().Resolver == true and Locking then 
+        local character = Plr.Character.HumanoidRootPart
+        local lastPosition = character.Position
+            task.wait()
+        local currentPosition = character.Position
+        local velocity = calculateVelocity(lastPosition, currentPosition, deltaTime)
+        character.AssemblyLinearVelocity = velocity
+        character.Velocity = velocity
+            lastPosition = currentPosition
+        end
+    end)
+
+    game:GetService("RunService").RenderStepped:Connect(function()
+    if Locking and Plr ~= nil and getgenv().UseCam == true then
+        CC.CFrame = CFrame.new(CC.CFrame.Position,Tracer.CFrame.Position)
+    end
+   
+       if getgenv().ViewAt == true and Locking then
+CC.CameraSubject = Plr.Character
+else
+CC.CameraSubject = game.Players.LocalPlayer.Character 
+end
+
+if getgenv().Tracer == true and Locking and Plr ~= nil then
+            local Vector, OnScreen = CC:worldToViewportPoint(Plr.Character[getgenv().Partz].Position + (Plr.Character[getgenv().Partz].Velocity * Prediction))
+            if OnScreen then
+            Line.Visible = true
+Line.Thickness = 3.5
+Line.Transparency = 1
+Line.Color = Color3.fromRGB(251,255,255)
+            Line.From = Vector2.new(mouse.X, mouse.Y + Inset)
+            Line.To = Vector2.new(Vector.X, Vector.Y)
+          end
+        elseif not Locking then
+            Line.Visible = false
+        end
+end)
+	
+	local rawmetatable = getrawmetatable(game)
+	local old = rawmetatable.__namecall
+	setreadonly(rawmetatable, false)
+	rawmetatable.__namecall = newcclosure(function(...)
+		local args = {...}
+		if Locking and getnamecallmethod() == "FireServer" and args[2] == "UpdateMousePos" then
+			args[3] = Plr.Character[getgenv().Partz].Position+Vector3.new(0, getgenv().JumpOffset, 0)+(Plr.Character[getgenv().Partz].Velocity*Prediction)
+			return old(unpack(args))
+		end
+		return old(...)
+	end)
+	
+	while wait() do
+	if getgenv().AutoPrediction == true then
+        local pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+    local split = string.split(pingvalue,'(')
+    local ping = tonumber(split[1])
+    if ping < 220 then
+    getgenv().Prediction = 0.165566
+    elseif ping < 150 then
+    getgenv().Prediction = 0.15873582
+    elseif ping < 140 then
+        getgenv().Prediction = 0.15382643
+    elseif ping < 130 then
+        getgenv().Prediction = 0.153456211988654432687543768432763246831111
+    elseif ping < 125 then
+        getgenv().Prediction = 0.1482
+    elseif ping < 110 then
+        getgenv().Prediction = 0.14378
+    elseif ping < 105 then
+        getgenv().Prediction = 0.14484357
+    elseif ping < 90 then
+        getgenv().Prediction = 0.13873952
+    elseif ping < 80 then
+        getgenv().Prediction = 0.13581963
+    elseif ping < 70 then
+        getgenv().Prediction = 0.12862974
+    elseif ping < 60 then
+        getgenv().Prediction = 0.12671983
+    elseif ping < 50 then
+        getgenv().Prediction = 0.1368384
+    elseif ping < 40 then
+        getgenv().Prediction = 0.1314356
+            end 
+    end
+    end
+    end)
+
+testSection:AddTextbox("Prediction", nil, function(State)
+    getgenv().Prediction = State
+    end)
+   
+   testSection:AddTextbox("Jump Offset", nil, function(State)
+    JumpOffsetNoWay = State
+    end)
+    
+    testSection:AddDropdown('HitPart', {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso", "Penis"}, "HumanoidRootPart", false, function(Option)
+getgenv().Partz = "Option"
+end)
+
+local testSection = AimingTab:CreateSector("Auto Prediction", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddToggle("Auto Prediction", false, function(first)
+getgenv().AutoPrediction = first
+end)
+
+local testSection = AimingTab:CreateSector("Ultility", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddToggle("Look At", false, function(first)
+getgenv().LookAt = first
+end)
+
+testSection:AddToggle("View At", false, function(first)
+getgenv().ViewAt = first
+end)
+
+testSection:AddToggle("Use Camlock", false, function(first)
+getgenv().UseCam = first
+end)
+
+testSection:AddToggle("Airshot Function", false, function(first)
+getgenv().AirshotFunccc = first
+end)
+
+local ColorToggle = testSection:AddToggle("Highlight Target", false, function(gay)
+getgenv().Highlights = gay
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(251,255,255),  function(ztx)
+getgenv().Fill = ztx
+end) 
+
+ColorToggle:AddColorpicker(Color3.fromRGB(128,128,128), function(ztx)
+getgenv().Outline = ztx
+end)
+
+local ColorToggle = testSection:AddToggle("Tracer", false, function(gay)
+getgenv().Tracer = gay
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(251,255,255),  function(ztx)
+Line.Color = ztx
+end)
+
+local testSection = AimingTab:CreateSector("FOV", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddToggle("Use FOV", false, function(first)
+circle.Visible = first
+end)
+
+testSection:AddToggle("FOV Filled", false, function(first)
+circle.Filled = first
+end)
+
+testSection:AddTextbox("FOV Size", nil, function(State)
+circle.Radius = State
+end)
+
+local testSection = AimingTab:CreateSector("Resolver", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddDropdown('Ass Resolver', {"None","Desync","Reversed","Underworld","Slingshot","Swing"}, "None", false, function(Option)
+if State == "None" then
+         getgenv().Prediction = getgenv().Prediction
+                     getgenv().Partz = "LowerTorso"
+        elseif State == "Reversed" then
+          getgenv().Partz = "HumanoidRootPart"
+          getgenv().Prediction = -0.1411
+                 elseif State == "Desync" then
+             getgenv().Partz = "HumanoidRootPart"
+            getgenv().Prediction = 0.002
+                 elseif State == "Underworld" then
+          getgenv().Prediction = 0.2
+     getgenv().Partz = "Head"
+                      elseif State == "Slingshot" then
+              getgenv().Prediction = 0.33
+                     getgenv().Partz = "LowerTorso"
+                                           elseif State == "Swing" then
+              getgenv().Prediction = 0.13
+                     getgenv().Partz = "HumanoidRootPart"
+     
+        end
+        end)
+        
+testSection:AddToggle("Resolver", false, function(first)
+getgenv().Resolver = first
+end)
+
+local testSection = AimingTab:CreateSector("Target Strafe", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddToggle("Target Strafe", false, function(first)
+getgenv().TargetStrafe = first
+end)
+
+testSection:AddTextbox("Distance", nil, function(State)
+getgenv().StrafeRadius = State
+end)
+
+testSection:AddTextbox("Height", nil, function(State)
+getgenv().StrafeHeight = State
+end)
+
+testSection:AddTextbox("Speed", nil, function(State)
+getgenv().StrafeSpeed = State
+end)
+
+local testSection = AimingTab:CreateSector("Camlock", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddButton("Load Camlock", function(IhateGayPeople)
+getgenv().keytoclick = "X"
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = keytoclick
+tool.Activated:connect(function()
+    local vim = game:service("VirtualInputManager")
+vim:SendKeyEvent(true, keytoclick, false, game)
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+
+local player = game.Players.LocalPlayer
+
+local function connectCharacterAdded()
+    player.CharacterAdded:Connect(onCharacterAdded)
+end
+
+connectCharacterAdded()
+
+player.CharacterRemoving:Connect(function()
+    tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+-- [ Variables (Global Environmnet) ]
+
+--// Aimlock Settings
+getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}
+getgenv().AimlockToggleKey = "Y" -- Toggles Aimbot On/Off
+getgenv().AimRadius = 50 -- How far away from someones character you want to lock on at
+
+--// Prediction
+getgenv().PredictionVelocity =  0.11934 -- (8.1)
+getgenv().AimKey = Enum.KeyCode.X
+getgenv().Hold = false -- Rather or not you have to hold AimKey for it to lock
+getgenv().AntiBypass = false
+getgenv().BypassKey = Enum.KeyCode.Q
+getgenv().ZazaPrediction = false
+
+--// Whitelist
+getgenv().CrewWhitelist = {12039890} -- Won't lock into people who are in code
+
+--// Anti-Lock Settings
+getgenv().AntiLock = Enum.KeyCode.C
+getgenv().Velocity = Vector3.new(200,0,200)
+
+
+--// Constants
+local Players, UIS, RService, SGui = game:GetService"Players", game:GetService"UserInputService", game:GetService"RunService", game:GetService"StarterGui";
+local Client, Mouse, Camera, CF, RNew, Vec3, Vec2 = Players.LocalPlayer, Players.LocalPlayer:GetMouse(), workspace.CurrentCamera, CFrame.new, Ray.new, Vector3.new, Vector2.new;
+local Heartbeat, RStepped, Stepped = RService.Heartbeat, RService.RenderStepped, RService.Stepped
+local RVelocity, YVelocity = nil, 0.1
+local Character = Client.Character
+local RootPart  = Character:FindFirstChild("HumanoidRootPart")
+
+--// Bools / Targets
+local LockEnabled = false
+local Aimlock, MousePressed = true, false;
+local AimlockTarget;
+local AntiEnabled = false
+local PreviousPosition;
+
+
+-- // Functions to get target
+TargetFunctions = {
+
+	WorldToViewportPoint = function(P)
+		return Camera:WorldToViewportPoint(P)
+	end,
+
+	WorldToScreenPoint = function(P)
+		return Camera.WorldToScreenPoint(Camera, P)
+	end,
+
+	GetObscuringObjects = function(T)
+		if T and T:FindFirstChild(AimPart) and Client and Client.Character:FindFirstChild("Head") then
+			local RayPos = workspace:FindPartOnRay(RNew(
+				T[AimPart].Position, Client.Character.Head.Position)
+			)
+			if RayPos then return RayPos:IsDescendantOf(T) end
+		end
+	end,
+
+	checkPlayer = function(plr)
+		if plr and plr.Character then
+			local playerCharacter = plr.Character
+			local isKO = (playerCharacter.BodyEffects["K.O"].Value == false or playerCharacter:FindFirstChild("GRABBING_CONSTRAINT") ~= nil)
+			local NotYou = (playerCharacter.Name ~= Client.Name)
+			local foundCrew;
+			local dFolder = plr:FindFirstChild("DataFolder")
+			local iFolder = dFolder:FindFirstChild("Information")
+			local crew = iFolder:FindFirstChild("Crew")
+			for i,v in pairs(CrewWhitelist) do
+				if dFolder and iFolder and crew then
+					foundCrew = (crew.Value ~= tostring(v))
+					print(foundCrew, " Data")
+				else
+					foundCrew = true
+				end
+			end
+			print(isKO, NotYou, foundCrew, " after list")
+			return (isKO and NotYou and foundCrew)
+		end
+		return false
+	end,
+
+	GetNearestTarget = function()
+		-- Credits to whoever made this, i didnt make it, and my own mouse2plr function kinda sucks
+		local players = {}
+		local PLAYER_HOLD  = {}
+		local DISTANCES = {}
+		for i, v in pairs(Players:GetPlayers()) do
+			if v ~= Client then
+				table.insert(players, v)
+			end
+		end
+
+		for i, v in pairs(players) do
+			if v.Character ~= nil then
+				local AIM = v.Character:FindFirstChild("Head")
+					local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
+					local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
+					local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
+					local DIFF = math.floor((POS - AIM.Position).magnitude)
+					PLAYER_HOLD[v.Name .. i] = {}
+					PLAYER_HOLD[v.Name .. i].dist= DISTANCE
+					PLAYER_HOLD[v.Name .. i].plr = v
+					PLAYER_HOLD[v.Name .. i].diff = DIFF
+					table.insert(DISTANCES, DIFF)
+			end
+		end
+
+		if unpack(DISTANCES) == nil then
+			return nil
+		end
+
+		local L_DISTANCE = math.floor(math.min(unpack(DISTANCES)))
+		if L_DISTANCE > getgenv().AimRadius then
+			return nil
+		end
+
+		for i, v in pairs(PLAYER_HOLD) do
+			if v.diff == L_DISTANCE then
+				return v.plr
+			end
+		end
+		return nil
+	end
+
+}
+
+InputFunctions = {
+
+	HandleAimToggle = function()
+		if not Hold then
+			if LockEnabled then
+				LockEnabled = false
+				if AimlockTarget ~= nil then AimlockTarget = nil end
+				if MousePressed ~= false then MousePressed = false end
+			else
+				LockEnabled = true
+				pcall(function()
+					if MousePressed ~= true then MousePressed = true end
+					local Target;Target = TargetFunctions.GetNearestTarget()
+					if Target ~= nil then
+						AimlockTarget = Target
+					end
+				end)
+			end
+		elseif Hold then
+			pcall(function()
+				if MousePressed ~= true then MousePressed = true end
+				local Target;Target = TargetFunctions.GetNearestTarget()
+				if Target ~= nil then
+					AimlockTarget = Target
+				end
+			end)
+		end
+	end,
+
+	HandleAntiToggle = function()
+		if AntiEnabled then
+			AntiEnabled = false
+		else
+			AntiEnabled = true
+			task.spawn(function()
+				print("Enabled")
+				while AntiEnabled do
+					--// this a dumb check asnilsadsa
+					if (not RootPart) or (not RootPart.Parent) or (not RootPart.Parent.Parent) then
+						repeat task.wait() RootPart = Character:FindFirstChild("HumanoidRootPart") until RootPart ~= nil
+					else
+						RVelocity = RootPart.Velocity
+
+						RootPart.Velocity = type(Velocity) == "vector" and Velocity or Velocity(RVelocity)
+
+						RStepped:wait()
+
+						RootPart.Velocity = RVelocity
+					end
+					Heartbeat:wait()
+				end
+			end)
+		end
+	end,
+
+	InputType = function(input)
+		if input.KeyCode == AimKey then
+			InputFunctions.HandleAimToggle()
+		elseif input.KeyCode == Enum.KeyCode[AimlockToggleKey] then
+			Aimlock = not Aimlock
+		elseif input.KeyCode == AntiLock then
+			InputFunctions.HandleAntiToggle()
+		elseif input.KeyCode == BypassKey then
+			if AntiBypass then
+				AntiBypass = false
+			else
+				AntiBypass = true
+			end
+		end
+	end,
+}
+
+HeartBeatFunctions = {
+	Checks = function()
+		if Aimlock == true and MousePressed == true then
+			if AimlockTarget and AimlockTarget.Character and AimlockTarget.Character:FindFirstChild(getgenv().AimPart) then
+				if TargetFunctions.checkPlayer(AimlockTarget) then
+					return true
+				end
+			end
+		end
+	end,
+
+	CalculateVelocity = function(Before, After, deltaTime)
+		-- // Vars
+		local Displacement = (After - Before)
+		local Velocity = Displacement / deltaTime
+
+		-- // Return
+		return Velocity
+	end,
+
+	lockOn = function(Target, Velocity)
+		Camera.CFrame = CF(Camera.CFrame.p, Target.Position + Velocity*PredictionVelocity)
+	end,
+}
+
+UIS.InputBegan:Connect(function(input, gp)
+	if not (UIS:GetFocusedTextBox()) then
+		InputFunctions.InputType(input)
+	end
+end)
+
+UIS.InputEnded:Connect(function(input, gp)
+	if not (UIS:GetFocusedTextBox()) then
+		if not Hold then return end
+		if input.KeyCode == AimKey then
+			if AimlockTarget ~= nil then AimlockTarget = nil end
+			if MousePressed ~= false then
+				MousePressed = false
+			end
+		end
+	end
+end)
+
+RService.Heartbeat:Connect(function(delta)
+	if HeartBeatFunctions.Checks() then
+		local Aim_Part = AimlockTarget.Character[AimPart]
+		if (not PreviousPosition) then
+			PreviousPosition = Aim_Part.Position
+		end
+		if AntiBypass then
+			local Velocity = HeartBeatFunctions.CalculateVelocity(PreviousPosition, Aim_Part.Position, delta)
+			HeartBeatFunctions.lockOn(Aim_Part, Velocity)
+		else
+			local Velocity = Aim_Part.Velocity
+			HeartBeatFunctions.lockOn(Aim_Part, Velocity)
+		end
+		PreviousPosition = Aim_Part.Position
+	else
+		PreviousPosition = nil
+	end
+end)
+
+-- // Credit To Azure V2 The Worst Azure Version Ever
+
+RService.Stepped:Connect(function()
+if getgenv().ZazaPrediction == true then
+		local Ping = math.round(Stats.Network.ServerStatsItem["Data Ping"]:GetValue())
+
+		if Ping < 10 then
+			getgenv().PredictionVelocity = 0.097
+
+		elseif Ping < 20 then
+			getgenv().PredictionVelocity = 0.112
+
+		elseif Ping < 30 then
+			getgenv().PredictionVelocity = 0.115
+
+		elseif Ping < 40 then
+			getgenv().PredictionVelocity = 0.125
+
+		elseif Ping < 50 then
+			getgenv().PredictionVelocity = 0.122
+
+		elseif Ping < 60 then
+			getgenv().PredictionVelocity = 0.123
+
+		elseif Ping < 70 then
+			getgenv().PredictionVelocity = 0.132
+
+		elseif Ping < 80 then
+			getgenv().PredictionVelocity = 0.134
+
+		elseif Ping < 90 then
+			getgenv().PredictionVelocity = 0.137
+
+		elseif Ping < 100 then
+			getgenv().PredictionVelocity = 0.146
+
+		elseif Ping < 110 then
+			getgenv().PredictionVelocity = 0.148
+
+		elseif Ping < 120 then
+			getgenv().PredictionVelocity = 0.144
+
+		elseif Ping < 130 then
+			getgenv().PredictionVelocity = 0.157
+
+		elseif Ping < 140 then
+			getgenv().PredictionVelocity = 0.122
+
+		elseif Ping < 150 then
+			getgenv().PredictionVelocity = 0.152
+
+		elseif Ping < 160 then
+			getgenv().PredictionVelocity = 0.163
+
+		elseif Ping < 170 then
+			getgenv().PredictionVelocity = 0.192
+
+		elseif Ping < 180 then
+			getgenv().PredictionVelocity = 0.193
+
+		elseif Ping < 190 then
+			getgenv().PredictionVelocity = 0.167
+
+		elseif Ping < 200 then
+			getgenv().PredictionVelocity = 0.166
+
+		elseif Ping < 210 then
+			getgenv().PredictionVelocity = 0.168
+
+		elseif Ping < 220 then
+			getgenv().PredictionVelocity = 0.166
+
+		elseif Ping < 230 then
+			getgenv().PredictionVelocity = 0.157
+
+		elseif Ping < 240 then
+			getgenv().PredictionVelocity = 0.168
+
+		elseif Ping < 250 then
+			getgenv().PredictionVelocity = 0.165
+
+		elseif Ping < 260 then
+			getgenv().PredictionVelocity = 0.176
+
+		elseif Ping < 270 then
+			getgenv().PredictionVelocity = 0.177
+
+		elseif Ping < 280 then
+			getgenv().PredictionVelocity = 0.181
+
+		elseif Ping < 290 then
+			getgenv().PredictionVelocity = 0.182
+
+		elseif Ping < 300 then
+			getgenv().PredictionVelocity = 0.185
+		end
+	end
+	end)
+end)
+
+testSection:AddTextbox("Prediction", nil, function(State)
+    getgenv().PredictionVelocity = State
+    end)
+    
+    testSection:AddDropdown('HitPart', {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso", "Penis"}, "Head", false, function(Option)
+getgenv().AimPart = "Option"
+end)
+
+testSection:AddToggle("Resolver", false, function(first)
+getgenv().AntiBypass = first
+end)
+
+testSection:AddToggle("Auto Prediction", false, function(first)
+getgenv().ZazaPrediction = first
+end)
+
+testSection:AddToggle("Enabled", false, function(first)
+Settings.SilentAim.Enabled = first
+end)
+
+testSection:AddTextbox("Prediction", nil, function(State)
+Settings.SilentAim.PredictionAmount = State
+end)
+
+testSection:AddTextbox("Hit Chance (Max 100)", nil, function(State)
+Settings.SilentAim.HitChance = State
+end)
+
+testSection:AddDropdown('HitPart', {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso", "Penis"}, "HumanoidRootPart", false, function(Option)
+Settings.SilentAim.AimAt = Option
+end)
+
+testSection:AddToggle("Resolver", false, function(first)
+Settings.SilentAim.Resolver = first
+end)
+
+testSection:AddToggle("Show Fov", false, function(bool)
+Settings.SilentAim.FOVEnabled = bool
+        Settings.SilentAim.FOVShow = bool
+end)
+
+testSection:AddSlider("FOV Size", 25, 119, 500, 1, function(State)
+Settings.SilentAim.FOVSize = State
+end)
+ 
+ local testSection = gayTab:CreateSector("Main", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddToggle("Anchored", false, function(first)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = first
+end)
+
+testSection:AddToggle("Anti Slow", false, function(first)
+antislow = first
+	repeat
+		wait(0.1)
+		local gaylolfsa = game.Players.LocalPlayer
+		local L_177_ = gaylolfsa.Character.BodyEffects.Movement:FindFirstChild('NoJumping') or gaylolfsa.Character.BodyEffects.Movement:FindFirstChild('ReduceWalk') or gaylolfsa.Character.BodyEffects.Movement:FindFirstChild('NoWalkSpeed')
+		if L_177_ then
+			L_177_:Destroy()
+		end
+		if gaylolfsa.Character.BodyEffects.Reload.Value == true then
+			gaylolfsa.Character.BodyEffects.Reload.Value = false
+		end
+	until antislow == false
+end)
+
+getgenv().Bhop = false
+
+testSection:AddToggle("Auto Jump", false, function(first)
+getgenv().Bhop = first
+    while getgenv().Bhop do
+        wait()
+    game.Players.LocalPlayer.Character.Humanoid.Jump = true
+    end
+    end)
+
+testSection:AddToggle("Wallbang", false, function(State)
+if State == true then 
+        
+        local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+tool.Grip = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Grip - Vector3.new(0,27,0)
+tool.Parent = game.Players.LocalPlayer.Backpack
+tool.Parent = game.Players.LocalPlayer.Character
+
+elseif State == false then
+    
+    local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+tool.Grip = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Grip - Vector3.new(0,-27,0)
+tool.Parent = game.Players.LocalPlayer.Backpack
+tool.Parent = game.Players.LocalPlayer.Character
+
+end
+end)
+
+testSection:AddToggle("Auto Stomp", false, function(first)
+autostomp = first
+	game:GetService("RunService").Stepped:connect(function()
+		if autostomp then
+			game.ReplicatedStorage.MainEvent:FireServer("Stomp")
+		end
+	end)
+	dads = game.Players.LocalPlayer
+	mouas = dads:GetMouse()
+	mouas.KeyDown:connect(function(L_174_arg0)
+		if L_174_arg0 == "h" then
+			autostomp = not autostomp
+			game.ReplicatedStorage.MainEvent:FireServer("Stomp")
+		end
+	end)
+	end)
+	
+	 local testSection = gayTab:CreateSector("Self Misc", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+getgenv().cframespeedtoggle = false
+getgenv().speedvalue = 0.35
+getgenv().Spinbot = false
+getgenv().urspeed = 1000
+
+game:GetService("RunService").Heartbeat:Connect(
+    function()
+        if cframespeedtoggle == true then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame +
+                game.Players.LocalPlayer.Character.Humanoid.MoveDirection * speedvalue
+        end
+        if Spinbot then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(urspeed), 0)
+        end
+        end)
+        
+local ToggleBind = testSection:AddToggle("CFrame Speed", false, function(e)
+getgenv().cframespeedtoggle = e
+end)
+
+ToggleBind:AddKeybind()
+
+testSection:AddTextbox("Speed", nil, function(State)
+getgenv().speedvalue = State
+end)
+
+local ToggleBind = testSection:AddToggle("Spinbot", false, function(e)
+getgenv().Spinbot = e
+end)
+
+ToggleBind:AddKeybind()
+
+testSection:AddTextbox("Spinbot Speed", nil, function(State)
+getgenv().urspeed = State
+end)
+
+
+	local testSection = gayTab:CreateSector("Anti Stomp", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+getgenv().antistomp = false
+getgenv().AntiStompMethod = "Destroy"
+
+testSection:AddToggle("Enable", false, function(first)
+	getgenv().antistomp = first
+	
+	while getgenv().antistomp do
+    wait()
+    if game.Players.LocalPlayer.Character.BodyEffects["K.O"].Value == true then
+        if getgenv().AntiStompMethod == "Humanoid" then
+        game.Players.LocalPlayer.Character.Humanoid:Destroy()
+        elseif getgenv().AntiStompMethod == "Destroy" then
+            wait()
+            game.Players.LocalPlayer.Character.UpperTorso:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.LeftHand:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.RightHand:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.LeftLowerArm:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.RightLowerArm:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.RightUpperArm:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.LeftUpperArm:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.LeftFoot:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.LeftLowerLeg:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.RightLowerLeg:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.LowerTorso:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.RightUpperLeg:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.LeftUpperLeg:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.Head:Destroy()
+            wait()
+            game.Players.LocalPlayer.Character.RightFoot:Destroy()
+
+        end
+    end
+end
+end)
+
+testSection:AddDropdown('Anti Stomp Type', {"Destroy", "Humanoid"}, "Destroy", false, function(Option)
+getgenv().AntiStompMethod = "Option"
+end)
+
+local testSection = gayTab:CreateSector("Auto Buy", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+	
+	testSection:AddDropdown('Guns', {"Revolver", "DB", "SMG", "AK-47", "LMG", "Glock", "Silencer", "RPG", "Flamethrower", "Taser"}, "None", false, function(State)
+	if State == "Revolver" then
+            plr = game:GetService "Players".LocalPlayer
+            local gunName = "[Revolver] - $1300"
+            local k = game.Workspace.Ignored.Shop[gunName]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop[gunName].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop[gunName].ClickDetector)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "DB" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Double-Barrel SG] - $1400"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Double-Barrel SG] - $1400"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Double-Barrel SG] - $1400"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "SMG" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[SMG] - $750"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[SMG] - $750"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[SMG] - $750"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "AK-47" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[AK47] - $2250"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[AK47] - $2250"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[AK47] - $2250"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "LMG" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[LMG] - $3750"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[LMG] - $3750"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[LMG] - $3750"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Glock" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Glock] - $500"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Glock] - $500"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Glock] - $500"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Silencer" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Silencer] - $550"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Silencer] - $550"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Silencer] - $550"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "RPG" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[RPG] - $6000"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[RPG] - $6000"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[RPG] - $6000"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Flamethrower" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Flamethrower] - $25000"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Flamethrower] - $25000"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Flamethrower] - $25000"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Taser" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Taser] - $1250"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Taser] - $1250"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Taser] - $1250"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        end
+    end)
+    
+    testSection:AddDropdown('Ammo', {"Revolver", "DB", "SMG", "AK-47", "LMG", "Glock", "Silencer", "RPG", "Flamethrower"}, "None", false, function(State)
+    if State == "Revolver" then
+            local plr = game:GetService "Players".LocalPlayer
+            local gunName = "12 [Revolver Ammo] - $75"
+            local k = game.Workspace.Ignored.Shop[gunName]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop[gunName].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop[gunName].ClickDetector)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "DB" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["18 [Double-Barrel SG Ammo] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["18 [Double-Barrel SG Ammo] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["18 [Double-Barrel SG Ammo] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "SMG" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["80 [SMG Ammo] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["80 [SMG Ammo] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["80 [SMG Ammo] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "AK-47" then
+            plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["90 [AK47 Ammo] - $80"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["90 [AK47 Ammo] - $80"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["90 [AK47 Ammo] - $80"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "LMG" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["200 [LMG Ammo] - $300"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["200 [LMG Ammo] - $300"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["200 [LMG Ammo] - $300"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Glock" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["25 [Glock Ammo] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["25 [Glock Ammo] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["25 [Glock Ammo] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Silencer" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["25 [Silencer Ammo] - $50"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["25 [Silencer Ammo] - $50"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["25 [Silencer Ammo] - $50"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "RPG" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["5 [RPG Ammo] - $1000"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["5 [RPG Ammo] - $1000"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["5 [RPG Ammo] - $1000"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Flamethrower" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["140 [Flamethrower Ammo] - $1550"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["140 [Flamethrower Ammo] - $1550"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["140 [Flamethrower Ammo] - $1550"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        end
+    end)
+    
+    testSection:AddDropdown('Armor', {"Medium Armor", "High-Medium Armor"}, "None", false, function(State)
+if State == "Medium Armor" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Medium Armor] - $1600"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Medium Armor] - $1600"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Medium Armor] - $1600"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "High-Medium Armor" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[High-Medium Armor] - $2300"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[High-Medium Armor] - $2300"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[High-Medium Armor] - $2300"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        end
+    end)
+    
+    
+    testSection:AddDropdown('Melee', {"Knife", "Bat", "Shovel", "Pitchfork", "Stopsign"}, "None", false, function(State) 
+    if State == "Knife" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Knife] - $150"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Knife] - $150"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Knife] - $150"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Bat" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Bat] - $250"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Bat] - $250"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Bat] - $250"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Shovel" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Shovel] - $320"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Shovel] - $320"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Shovel] - $320"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Pitchfork" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Pitchfork] - $320"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Pitchfork] - $320"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Pitchfork] - $320"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Stopsign" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[StopSign] - $300"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[StopSign] - $300"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[StopSign] - $300"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        end
+    end)
+    
+    testSection:AddDropdown('Food', {"Chicken", "Pizza", "Hotdog", "Taco", "Hamburger", "Donut", "Lettuce"}, "None", false, function(State)
+    if State == "Chicken" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Chicken] - $7"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Chicken] - $7"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Chicken] - $7"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Pizza" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Pizza] - $5"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Pizza] - $5"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Pizza] - $5"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Hotdog" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[HotDog] - $8"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[HotDog] - $8"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[HotDog] - $8"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Taco" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Taco] - $2"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Taco] - $2"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Taco] - $2"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Hamburger" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Hamburger] - $5"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Hamburger] - $5"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Hamburger] - $5"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Donut" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Donut] - $5"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Donut] - $5"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Donut] - $5"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Lettuce" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Lettuce] - $5"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Lettuce] - $5"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Lettuce] - $5"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        end
+    end)
+    
+    testSection:AddDropdown('Drinks', {"Cranberry", "Lemonade", "Starblox"}, "None", false, function(State)
+            if State == "Cranberry" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Cranberry] - $3"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Cranberry] - $3"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Cranberry] - $3"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Lemonade" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Lemonade] - $3"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Lemonade] - $3"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Lemonade] - $3"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Starblox" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Starblox Latte] - $5"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Starblox Latte] - $5"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Starblox Latte] - $5"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        end
+    end)
+    
+    testSection:AddDropdown('Bikes', {"Solo","Duo"}, "None", false, function(State)
+    if State == "Solo" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[SoloBike] - $25"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[SoloBike] - $25"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[SoloBike] - $25"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Duo" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[DuoBike] - $75"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[DuoBike] - $75"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[DuoBike] - $75"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        end
+    end)
+    
+    testSection:AddDropdown('Mask', {"Surgeon", "Riot", "Hockey", "Ninja", "Skull", "Paintball", "Breathing"}, "None", false, function(State)
+    if State == "Surgeon" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Surgeon Mask] - $25"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Surgeon Mask] - $25"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Surgeon Mask] - $25"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Riot" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Riot Mask] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Riot Mask] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Riot Mask] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Hockey" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Hockey Mask] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Hockey Mask] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Hockey Mask] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Ninja" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Ninja Mask] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Ninja Mask] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Ninja Mask] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Skull" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Skull Mask] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Skull Mask] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Skull Mask] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Paintball" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Paintball Mask] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Paintball Mask] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Paintball Mask] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        elseif State == "Breathing" then
+            local plr = game:GetService "Players".LocalPlayer
+            local k = game.Workspace.Ignored.Shop["[Breathing Mask] - $60"]
+            local savedsilencerpos = plr.Character.HumanoidRootPart.Position
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+            wait(0.5)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Breathing Mask] - $60"].ClickDetector)
+            fireclickdetector(game.Workspace.Ignored.Shop["[Breathing Mask] - $60"].ClickDetector)
+
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedsilencerpos)
+        end
+    end)
+    
+local testSection = gayTab:CreateSector("Grip", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+getgenv().EnableGrip = false
+getgenv().EnableGripFront = 10
+getgenv().EnableGripSide = 10
+getgenv().EnableGripHeight = 10
+
+testSection:AddToggle("Enable", false, function(first)
+getgenv().EnableGrip = first
+while  getgenv().EnableGrip do
+    game:GetService("RunService").Stepped:wait()
+        local niggertool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        niggertool.GripPos = Vector3.new(-EnableGripSide, -EnableGripHeight, EnableGripFront)
+end
+    
+        if getgenv().EnableGrip == false then
+        local niggertool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        niggertool.GripPos = Vector3.new(-0, -0, 0)
+end 
+end)
+
+testSection:AddTextbox("Grip Side", nil, function(State)
+getgenv().EnableGripSide = State
+end)
+
+testSection:AddTextbox("Grip Side", nil, function(State)
+getgenv().EmableGripFront = State
+end)
+
+testSection:AddTextbox("Grip Height", nil, function(State)
+getgenv().EnableGripHeight = State
+end)
+
+    local testSection = gayTab:CreateSector("Teleport", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+    
+    testSection:AddButton("Save Current Position", function(IhateGayPeople)
+    CurrentCFrame = game.Players.LocalPlayer.Character.PrimaryPart.Position
+    end)
+    
+    testSection:AddDropdown('TP To', {"Saved Position",
+        "Admin Base",
+        "Armor",
+        "Uphill Mountain",
+        "AK Mountain",
+        "Playground Mountain",
+        "Bank Buildings",
+        "Bank Tree",
+        "Rev Mountains",
+        "Flank Mountains",
+        "School",
+        "Circus",
+        "UFO"}, "None", false, function(State)
+        if State == "Saved Position" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(CurrentCFrame)
+        elseif State == "Admin Base" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-874.903992, -32.6492004, -525.215698)
+        elseif State == "Armor" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-934.73651123047, -28.492471694946, 565.99884033203)
+        elseif State == "Uphill Mountain" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                485.651947,
+                112.5,
+                -644.316833,
+                -0.998899043,
+                1.33881997e-06,
+                0.0469136797,
+                8.00526664e-07,
+                1,
+                -1.14929126e-05,
+                -0.0469136797,
+                -1.14426994e-05,
+                -0.998899043
+            )
+        elseif State == "AK Mountain" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                -658.31897,
+                80.9998474,
+                -778.077576,
+                -0.142138869,
+                1.05273443e-08,
+                -0.989845812,
+                4.51260629e-09,
+                1,
+                9.98731764e-09,
+                0.989845812,
+                -3.04721426e-09,
+                -0.142138869
+            )
+        elseif State == "Playground Mountain" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                -260.836182,
+                126.424866,
+                -877.783875,
+                -0.977067351,
+                -1.56508904e-05,
+                -0.212922528,
+                9.92513264e-07,
+                1,
+                -7.80593255e-05,
+                0.212922528,
+                -7.64806027e-05,
+                -0.977067351
+            )
+        elseif State == "Bank Buildings" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                -327.583862,
+                80.4338913,
+                -278.811951,
+                -0.0466220938,
+                -1.94237373e-08,
+                0.998912573,
+                1.07243459e-07,
+                1,
+                2.44502392e-08,
+                -0.998912573,
+                1.08266761e-07,
+                -0.0466220938
+            )
+        elseif State == "Bank Tree" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                -374.538391,
+                102.052887,
+                -440.20871,
+                0.958144963,
+                9.24065989e-06,
+                -0.286283433,
+                -9.98981818e-07,
+                1,
+                2.89345699e-05,
+                0.286283433,
+                -2.74375216e-05,
+                0.958144963
+            )
+        elseif State == "Rev Mountains" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                -659.053162,
+                110.748001,
+                -158.224365,
+                0.146754071,
+                -2.38941595e-08,
+                -0.989172995,
+                -1.60316838e-09,
+                1,
+                -2.43935396e-08,
+                0.989172995,
+                5.16566212e-09,
+                0.146754071
+            )
+        elseif State == "Flank Mountains" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                376.730621,
+                130.748001,
+                -245.620468,
+                0.996583343,
+                5.90310174e-06,
+                -0.0825867951,
+                -1.72590728e-06,
+                1,
+                5.06508768e-05,
+                0.0825867951,
+                -5.03353003e-05,
+                0.996583343
+            )
+        elseif State == "School" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                -581.790283,
+                68.4947281,
+                331.046448,
+                0.220051467,
+                -7.56681329e-05,
+                0.975498199,
+                -3.96428077e-05,
+                0.999999583,
+                8.65130132e-05,
+                -0.975498199,
+                -5.77078645e-05,
+                0.22005
+            )
+        elseif State == "Circus" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                170.510178,
+                59.6617432,
+                -944.884216,
+                0.806685388,
+                -8.34191383e-08,
+                0.590979934,
+                9.47717194e-09,
+                1,
+                1.28217792e-07,
+                -0.590979934,
+                -9.78305081e-08,
+                0.806685388
+            )
+        elseif State == "UFO" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                65.1504517,
+                138.999954,
+                -691.819031,
+                -0.935115993,
+                -5.9791418e-08,
+                -0.354341775,
+                -3.10840989e-08,
+                1,
+                -8.67077574e-08,
+                0.354341775,
+                -7.0067415e-08,
+                -0.935115993
+            )
+        end
+    end)
+        
+              local testSection = gayTab:CreateSector("Custom Gun SFX", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+ testSection:AddToggle("Enable", false, function(first)
+ getgenv().HitSounds = first
+ end)
+testSection:AddTextbox("ID", nil, function(Text)
+    getgenv().HitSoundsID = "rbxassetid://" .. Text .. ""
+end)
+testSection:AddTextbox("Volume", nil, function(Value)
+    getgenv().Volume = Value 
+end) 
+        
+local testSection = VisTab:CreateSector("Chams", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddToggle("Chams Yourself", false, function(first)
+getgenv().CuhChams = first
+	end)
+
+	testSection:AddToggle("Gun Chams", false, function(first)
+	getgenv().GunChams = first
+	end)
+	
+	task.spawn(function ()
+            while true do
+                wait()
+                if getgenv().GunChams then
+                    if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool") then
+                        game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool").Default.Material = "ForceField"
+                    end
+                else
+                    if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool") then
+                        game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool").Default.Material = "Plastic"
+                    end
+                end
+            end
+        end)
+	
+	    local LocalHL = Instance.new("Highlight")
+	testSection:AddToggle("Highlight Self", false, function(first)
+	getgenv().Highlight = first
+                   end)
+	
+	
+	testSection:AddToggle("Clone Chams", false, function(first)
+	getgenv().Clone = first
+if getgenv().Clone == true then
+    repeat
+                            game.Players.LocalPlayer.Character.Archivable = true
+                            local Clone = game.Players.LocalPlayer.Character:Clone()
+                            for _,Obj in next, Clone:GetDescendants() do
+                                if Obj.Name == "HumanoidRootPart" or Obj:IsA("Humanoid") or Obj:IsA("LocalScript") or Obj:IsA("Script") or Obj:IsA("Decal") then
+                                    Obj:Destroy()
+                                elseif Obj:IsA("BasePart") or Obj:IsA("Meshpart") or Obj:IsA("Part") then
+                                    if Obj.Transparency == 1 then
+                                        Obj:Destroy()
+                                    else
+                                        Obj.CanCollide = false
+                                        Obj.Anchored = true
+                                        Obj.Material = "ForceField"
+                                        Obj.Color = Color3.fromRGB(4, 0, 255)
+                                        Obj.Transparency = 0
+                                        Obj.Size = Obj.Size + Vector3.new(0.03, 0.03, 0.03)
+                                        
+                                        
+                                    end
+                                end
+                                pcall(function()
+                                    Obj.CanCollide = false
+                                end)
+                            end
+                            Clone.Parent = game.Workspace
+                                                                wait(0.6)
+                                    Clone:Destroy()
+                                    until getgenv().Clone == false
+    end
+        end)
+        
+        
+	
+        
+	testSection:AddToggle("Dead Chams", false, function(first)
+	getgenv().DeadChams = first
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if getgenv().DeadChams then
+        for i, v in pairs(game.Players:GetChildren()) do
+            if v.Name ~= game.Players.LocalPlayer.Name then
+                if v.Character and v.Character:FindFirstChild("Humanoid") then
+                    if v.Character:WaitForChild("BodyEffects") and v.Character.Humanoid.health < 3 then 
+                        for _, k in pairs(v.Character:GetChildren()) do
+                            if k:IsA "BasePart" and not k:FindFirstChild "Cham" then
+            
+                                local cham = Instance.new("BoxHandleAdornment", k)
+            
+                                cham.ZIndex = 10
+                                cham.Adornee = k
+                                cham.AlwaysOnTop = true
+                                cham.Size = k.Size
+                                cham.Transparency = 0.5
+                                cham.Color3 = Color3.fromRGB(105, 95, 245)
+                                cham.Name = "Cham"
+            
+                            end
+                        end
+                    else
+                        for _, k in pairs(v.Character:GetChildren()) do
+                            if k:IsA "BasePart" and k:FindFirstChild "Cham" then
+                                k:FindFirstChild("Cham"):Destroy()
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+
+local testSection = VisTab:CreateSector("ESP", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ImHaalfi/random-trash-project/main/Taffy%20ESP.txt"))()
+
+local ColorToggle = testSection:AddToggle("ESP Boxes", false, function(e)
+getgenv().taffy_esp.box.enabled = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255,255,255), function(ztx)
+   getgenv().taffy_esp.box.color1  = ztx
+end)
+
+
+local ColorToggle = testSection:AddToggle("ESP Healthbar", false, function(e)
+getgenv().taffy_esp.box.healthbar = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(4, 0, 255),function(ztx)
+   getgenv().taffy_esp.box.healthbarcolor  = ztx
+end)
+
+
+local ColorToggle = testSection:AddToggle("ESP Tracer", false, function(e)
+getgenv().taffy_esp.tracer.enabled = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255,255,255), function(ztx)
+getgenv().taffy_esp.tracer.color  = ztx
+end)
+
+
+local ColorToggle = testSection:AddToggle("ESP Name", false, function(e)
+getgenv().taffy_esp.name.enabled = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255,255,255), function(ztx)
+   getgenv().taffy_esp.name.color  = ztx
+end)
+
+local ColorToggle = testSection:AddToggle("Show Tool", false, function(e)
+getgenv().taffy_esp.Toolsshow.enable = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(147,39,161), function(ztx)
+   getgenv().taffy_esp.Toolsshow.color  = ztx
+end)
+  
+local testSection = VisTab:CreateSector("Custom Blood Image", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddDropdown('Blood Image', {"illuminati",
+        "Violet",
+        "Asuka",
+        "Rem",
+        "Astolfo",
+          "Blank"}, "None", false, function(Option)
+          if Option == "illuminati" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=487518317"
+     elseif Option == "Violet" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=10025463033" 
+     elseif Option == "Asuka" then
+          game.ReplicatedStorage.DMGIndicator.Image =  "http://www.roblox.com/asset/?id=10025498995"
+     elseif Option == "Rem" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=10025524529"
+     elseif Option == "Astolfo" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=10025538975"
+     elseif Option == "Blank" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=8968805098"
+     end
+    end)
+
+local BroSection = VisTab:CreateSector("Avatar", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+BroSection:AddToggle("Korblox", false, function(first)
+if first == true then
+game.Players.LocalPlayer.Character.RightFoot.MeshId = "http://www.roblox.com/asset/?id=902942093"
+			game.Players.LocalPlayer.Character.RightLowerLeg.MeshId = "http://www.roblox.com/asset/?id=902942093"
+			game.Players.LocalPlayer.Character.RightUpperLeg.MeshId = "http://www.roblox.com/asset/?id=902942096"
+			game.Players.LocalPlayer.Character.RightUpperLeg.TextureID = "http://roblox.com/asset/?id=902843398"
+			game.Players.LocalPlayer.Character.RightFoot.Transparency = 1
+			game.Players.LocalPlayer.Character.RightLowerLeg.Transparency = 1
+		else
+			game.Players.LocalPlayer.Character.RightFoot.MeshId = Storage.RightFootMeshID
+			game.Players.LocalPlayer.Character.RightLowerLeg.MeshId = Storage.RightLowerLegMeshID
+			game.Players.LocalPlayer.Character.RightUpperLeg.MeshId = Storage.RightUpperLegMeshID
+			game.Players.LocalPlayer.Character.RightUpperLeg.TextureID = Storage.RightUpperLegMeshID
+			game.Players.LocalPlayer.Character.RightFoot.Transparency = Storage.RightFootTransparency
+			game.Players.LocalPlayer.Character.RightLowerLeg.Transparency = Storage.RightLowerLegTransparency
+		end
+	end)
+	
+	BroSection:AddToggle("Blizzard Beast Mode", false, function(first)
+	if first == true then
+	pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://209712379"
+				end
+			)
+		else
+			pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = Storage.Face
+				end
+			)
+		end
+	end)
+	
+	BroSection:AddToggle("SSHF", false, function(first)
+	if first == true then
+	pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://494290547"
+				end
+			)
+		else
+			pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = Storage.Face
+				end
+			)
+		end
+	end) 
+	
+	BroSection:AddToggle("Beast Mode", false, function(first)
+	if first == true then
+	pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://127959433"
+				end
+			)
+		else
+			pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = Storage.Face
+				end
+			)
+		end
+	end)
+	
+	BroSection:AddToggle("Playful Vampire", false, function(first)
+	if v == true then
+pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://2409281591"
+				end
+			)
+		else
+			pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = Storage.Face
+				end
+			)
+		end
+	end)
+	
+	local testSection = VisTab:CreateSector("Crosshair", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+local ColorToggle = testSection:AddToggle("Draw Ugly Crosshair", false, function(e)
+game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Visible = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Top.Visible = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Bottom.Visible = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Right.Visible = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Left.Visible = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255,255,255), function(e)
+game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.BackgroundColor3 = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Top.BackgroundColor3 = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Bottom.BackgroundColor3 = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Right.BackgroundColor3 = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Left.BackgroundColor3 = e
+end)
+
+testSection:AddToggle("Spinning Crosshair", false, function(first)
+getgenv().Spin = first
+end)
+
+testSection:AddTextbox("Spinning Crosshair Speed", nil, function(Value)
+    getgenv().SpinPower = Value
+end)
+
+testSection:AddToggle("Swastika", false, function(first)
+Swastika.Visible = first
+end)
+
+testSection:AddToggle("Rainbow Swastika", false, function(first)
+getgenv().Rainbow = first
+end)
+
+testSection:AddToggle("Spinning Swastika", false, function(first)
+getgenv().CursorSpin = first
+end)
+
+testSection:AddTextbox("Spinning Swastika Speed", nil, function(Value)
+getgenv().CursorSpeed = Value
+end)
+
+
+local BroSection = VisTab:CreateSector("Other", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+
+local ColorToggle = BroSection:AddToggle("Ambient", false, function(gay)
+if gay == true then
+game:GetService("Lighting").Ambient = Color3.fromRGB(0, 254, 252)
+else
+game:GetService("Lighting").Ambient = Color3.fromRGB(0,0,0)
+end
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(0, 254, 252), function(ztx)
+if gay == true then
+game:GetService("Lighting").Ambient = ztx
+end
+end)
+
+local ColorToggle = BroSection:AddToggle("World Accent", false, function(gay)
+if gay == true then
+game:GetService("Lighting").ColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+else
+game:GetService("Lighting").ColorCorrection.TintColor = Color3.fromRGB(255, 255, 255)
+end
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255, 0, 0), function(ztx)
+if gay == true then
+game:GetService("Lighting").ColorCorrection.TintColor = ztx
+end
+end)
+
+BroSection:AddTextbox("Contrast (Max 500)", nil, function(State)
+ game:GetService("Lighting").ColorCorrection.Contrast = State
+end)
+
+BroSection:AddTextbox("Enter New Saturtation", nil, function(State)
+game.Lighting.ColorCorrection.Saturation = tonumber(State)
+end)
+
+BroSection:AddButton("Reset Saturtation", function(IhateGayPeople)
+game.Lighting.ColorCorrection.Saturation = 0.10000000149012
+end)
+
+
+BroSection:AddTextbox("Enter New Brightness", nil, function(State)
+game.Lighting.Brightness = tonumber(State)
+end)
+
+BroSection:AddButton("Reset Brightness", function(IhateGayPeople)
+game.Lighting.Brightness = 1
+end)
+
+BroSection:AddToggle("GlobalShadows", false, function(first)
+game:GetService("Lighting").GlobalShadows = first
+end)
+
+local ColorToggle = BroSection:AddToggle("Custom Fog Color", false, function(gay)
+if gay == true then
+game:GetService("Lighting").FogColor = Color3.fromRGB(0, 255, 0)
+else
+game:GetService("Lighting").FogColor = Color3.fromRGB(0,0,0)
+end
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(0, 255, 0), function(ztx)
+if gay == true then
+game:GetService("Lighting").FogColor = ztx
+end
+end)
+
+BulletTracers = false
+bullet_tracer_color = Color3.fromRGB(255, 49, 49)
+---------------------------------------------------------------------------------------------------------------------------
+
+function GetGun()
+    if game.Players.LocalPlayer.Character then
+        for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if v:FindFirstChild 'Ammo' then
+                return v
+            end
+        end
+    end
+    return nil
+end
+
+local Services = {
+    Players = game:GetService("Players"),
+    UserInputService = game:GetService("UserInputService"),
+    RunService = game:GetService("RunService"),
+}
+
+local Local = {
+    Player = Services.Players.LocalPlayer,
+    Mouse = Services.Players.LocalPlayer:GetMouse(),
+}
+local Other = {
+    Camera = workspace.CurrentCamera,
+    BeamPart = Instance.new("Part", workspace)
+}
+
+Other.BeamPart.Name = "BeamPart"
+Other.BeamPart.Transparency = 1
+local Settings = {
+    StartColor = bullet_tracer_color,
+    EndColor = bullet_tracer_color,
+    StartWidth = 3,
+    EndWidth = 3,
+    ShowImpactPoint = true,
+    ImpactTransparency = 0.5,
+    ImpactColor = Color3.new(1, 1, 1),
+    Time = 1,
+}
+game:GetService "RunService".Heartbeat:Connect(function()
+    if game:GetService("Workspace").Ignored:FindFirstChild 'BULLET_RAYS' and BulletTracers then
+        game:GetService("Workspace").Ignored.BULLET_RAYS:Destroy()
+    end
+end)
+local funcs = {}
+Local.Mouse.TargetFilter = Other.BeamPart
+function funcs:Beam(v1, v2)
+    v2 = Vector3.new(v2.X - 0.1, v2.Y + 0.2, v2.Z)
+    local colorSequence = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, bullet_tracer_color),
+        ColorSequenceKeypoint.new(1, bullet_tracer_color),
+    })
+    local Part = Instance.new("Part", Other.BeamPart)
+    Part.Size = Vector3.new(0, 0, 0)
+    Part.Massless = true
+    Part.Transparency = 1
+    Part.CanCollide = false
+    Part.Position = v1
+    Part.Anchored = true
+    local Attachment = Instance.new("Attachment", Part)
+    local Part2 = Instance.new("Part", Other.BeamPart)
+    Part2.Size = Vector3.new(0, 0, 0)
+    Part2.Transparency = 0
+    Part2.CanCollide = false
+    Part2.Position = v2
+    Part2.Anchored = true
+    Part2.Material = Enum.Material.ForceField
+    Part2.Color = Settings.ImpactColor
+    Part2.Massless = true
+    local Attachment2 = Instance.new("Attachment", Part2)
+    local Beam = Instance.new("Beam", Part)
+    Beam.FaceCamera = true
+    Beam.Color = colorSequence
+    Beam.Attachment0 = Attachment
+    Beam.Attachment1 = Attachment2
+    Beam.LightEmission = 6
+    Beam.LightInfluence = 1
+    Beam.Width0 = Settings.StartWidth
+    Beam.Width1 = Settings.EndWidth
+    Beam.Texture = "http://www.roblox.com/asset/?id=9150663556"
+    Beam.TextureSpeed = 2
+    Beam.TextureLength = 1
+    delay(Settings.Time, function()
+        Part:Destroy()
+        Part2:Destroy()
+    end)
+end
+
+spawn(function()
+    while task.wait(0.5) do
+        gun = GetGun()
+        if gun then
+            LastAmmo = gun.Ammo.Value
+            gun.Ammo:GetPropertyChangedSignal("Value"):Connect(function()
+                if BulletTracers and gun.Ammo.Value < LastAmmo then
+                    LastAmmo = gun.Ammo.Value
+                    funcs:Beam(gun.Handle.Position, Local.Mouse.hit.p)
+                end
+            end)
+        end
+    end
+end)
+
+
+
+local ColorToggle = BroSection:AddToggle("Bullet Tracers", false, function(gay)
+BulletTracers = gay
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255, 49, 49), function(ztx)
+bullet_tracer_color = ztx
+end)
+
+BroSection:AddDropdown('SkyBoxes', {"None","Void Sky", "Purple Nebula", "Night Sky", "Morning Glow", "Neptune","The Rock","Among Us"}, "None", false, function(t)
+if t == "None" then
+game:GetService("Lighting").Sky.SkyboxBk = "rbxassetid://600830446"
+        game:GetService("Lighting").Sky.SkyboxDn = "rbxassetid://600831635"
+        game:GetService("Lighting").Sky.SkyboxFt = "rbxassetid://600832720"
+        game:GetService("Lighting").Sky.SkyboxLf = "rbxassetid://600886090"
+         game:GetService("Lighting").Sky.SkyboxRt = "rbxassetid://600833862"
+          game:GetService("Lighting").Sky.SkyboxUp = "rbxassetid://600835177"
+elseif t == "Void Sky" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=9851144466"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=9851144249"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=9851144099"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=9851143942"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=9851143761"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=9851143257"
+elseif t == "Purple Nebula" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=159454299"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=159454296"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=159454293"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=159454286"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=159454300"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=159454288"
+elseif t == "Night Sky" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=12064107"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=12064152"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=12064121"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=12063984"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=12064115"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=12064131"
+elseif t == "Morning Glow" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=1417494030"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=1417494146"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=1417494253"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=1417494402"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=1417494253"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=1417494643"
+elseif t == "Neptune" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=218955819"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=218953419"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=218954524"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=218958493"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=218957134"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=218950090"
+elseif t == "The Rock" then
+game:GetService("Lighting").Sky.SkyboxBk = "http://www.roblox.com/asset/?id=8583043737"
+        game:GetService("Lighting").Sky.SkyboxDn = "http://www.roblox.com/asset/?id=8583043737"
+        game:GetService("Lighting").Sky.SkyboxFt = "http://www.roblox.com/asset/?id=8583043737"
+        game:GetService("Lighting").Sky.SkyboxLf = "http://www.roblox.com/asset/?id=8583043737"
+         game:GetService("Lighting").Sky.SkyboxRt = "http://www.roblox.com/asset/?id=8583043737"
+          game:GetService("Lighting").Sky.SkyboxUp = "http://www.roblox.com/asset/?id=8583043737"
+          elseif t == "Among Us" then
+          game:GetService("Lighting").Sky.SkyboxBk = "http://www.roblox.com/asset/?id=5850251189"
+        game:GetService("Lighting").Sky.SkyboxDn = "http://www.roblox.com/asset/?id=5850251189"
+        game:GetService("Lighting").Sky.SkyboxFt = "http://www.roblox.com/asset/?id=5850251189"
+        game:GetService("Lighting").Sky.SkyboxLf = "http://www.roblox.com/asset/?id=5850251189"
+         game:GetService("Lighting").Sky.SkyboxRt = "http://www.roblox.com/asset/?id=5850251189"
+          game:GetService("Lighting").Sky.SkyboxUp = "http://www.roblox.com/asset/?id=411367386" 
+end
+end)
+
+local testSection = VisTab:CreateSector("Custom Character", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+function Weld(x,y)
+       local W = Instance.new("Weld")
+       W.Part0 = x
+       W.Part1 = y
+       local CJ = CFrame.new(x.Position)
+       local C0 = x.CFrame:inverse()*CJ
+       local C1 = y.CFrame:inverse()*CJ
+       W.C0 = C0
+       W.C1 = C1
+       W.Parent = x
+end
+
+testSection:AddToggle('Custom Character', false, function(state)
+    if state then 
+        for i,v in pairs(LocalPlayer.Character:GetDescendants()) do 
+            if v:IsA("BasePart") or v:IsA("Decal") then 
+                v.Transparency = 1 
+            end 
+        end 
+        
+getgenv().Custom = LocalPlayer.Character:WaitForChild("Humanoid").Died:Connect(function()
+fuc:Destroy()
+wait(5)
+fuc = Instance.new("Part",workspace) 
+fuc.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+fuc.CanCollide = false
+fuck = Instance.new("SpecialMesh")
+fuck.Parent = fuc
+fuck.MeshType ="FileMesh"
+    if getgenv().CharacterType  == "AmongUs" then 
+        fuck.Scale=Vector3.new(0.2,0.2,0.2) 
+        fuck.TextureId="http://www.roblox.com/asset/?id=6686375937" 
+        fuck.MeshId="http://www.roblox.com/asset/?id=6686375902"
+    elseif getgenv().CharacterType  == "Stewie" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) 
+        fuck.TextureId="http://www.roblox.com/asset/?id=3692134820"
+        fuck.MeshId="http://www.roblox.com/asset/?id=3692134742" 
+    elseif getgenv().CharacterType  == "Sonic" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) 
+        fuck.TextureId="http://www.roblox.com/asset/?id=6901422268"
+        fuck.MeshId="http://www.roblox.com/asset/?id=6901422170"
+    elseif getgenv().CharacterType  == "Chicken" then     
+        fuck.Scale=Vector3.new(3,3,3) 
+        fuck.TextureId="http://www.roblox.com/asset/?id=2114220248" 
+        fuck.MeshId="http://www.roblox.com/asset/?id=2114220154" 
+end 
+
+    Weld(LocalPlayer.Character.HumanoidRootPart,fuc)
+
+    for i,v in pairs(LocalPlayer.Character:GetDescendants()) do 
+        if v:IsA("BasePart") or v:IsA("Decal") then 
+            v.Transparency = 1
+        end 
+    end 
+
+end)
+        
+        fuc = Instance.new("Part",workspace) 
+        fuc.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+        fuc.CanCollide = false
+        fuck = Instance.new("SpecialMesh")
+        fuck.Parent = fuc
+        fuck.MeshType ="FileMesh"
+
+        if getgenv().CharacterType  == "AmongUs" then 
+        fuck.Scale=Vector3.new(0.2,0.2,0.2) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=6686375937" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=6686375902" -- Mesh Id
+    elseif getgenv().CharacterType  == "Stewie" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=3692134820" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=3692134742" -- Mesh Id
+    elseif getgenv().CharacterType  == "Sonic" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=6901422268" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=6901422170"
+    elseif getgenv().CharacterType  == "Chicken" then     
+        fuck.Scale=Vector3.new(3,3,3) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=2114220248" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=2114220154" -- Mesh Id
+    end 
+
+        Weld(LocalPlayer.Character.HumanoidRootPart,fuc)
+        else 
+        fuc:Destroy()
+        
+        for i,v in pairs(LocalPlayer.Character:GetDescendants()) do 
+            if v:IsA("BasePart") or v:IsA("Decal") then 
+                v.Transparency = 0 
+            end 
+        end 
+        
+        getgenv().Custom:Disconnect()
+        
+        LocalPlayer.Character.HumanoidRootPart.Transparency = 1
+    end 
+end) 
+
+testSection:AddDropdown("Character Type", {"AmongUs", "Stewie", "Sonic", "Chicken"}, "AmongUs", false, function(Option)
+    getgenv().CharacterType = Option
+    
+    if Option == "AmongUs" then 
+        fuck.Scale=Vector3.new(0.2,0.2,0.2) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=6686375937" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=6686375902" -- Mesh Id
+    elseif Option == "Stewie" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=3692134820" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=3692134742" -- Mesh Id
+    elseif Option == "Sonic" then 
+        fuck.Scale=Vector3.new(0.25,0.25,0.25) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=6901422268" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=6901422170"
+    elseif Option == "Chicken" then     
+        fuck.Scale=Vector3.new(3,3,3) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=2114220248" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=2114220154" -- Mesh Id
+    end 
+end)
+
+local testSection = VisTab:CreateSector("China Hat", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+local ColorToggle = testSection:AddToggle("Enable", false, function(gay)
+settings.enabled = gay
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(128,18,255), function(ztx)
+settings.color = ztx
+end)
+
+testSection:AddToggle("Rainbow", false, function(first)
+settings.rainbow = first
+end)
+
+testSection:AddTextbox("Radius", nil, function(State)
+settings.radius = State
+end)
+
+testSection:AddTextbox("Sides", nil, function(State)
+settings.sides = State
+end)
+
+
+
+settings = {
+   enabled = false; -- / true / false
+   minCameraDistance = 1; -- / any number
+   hatTransparency = .35; -- / 0 - 1 (0 being invisible)
+   circleTransparency = 1; -- / 0 - 1 (0 being invisible)
+   height = .75; -- / any number
+   radius = 1; -- /-- any number
+   sides = 25; -- / any number
+   rainbow = false; -- / true / false
+   color = Color3.fromRGB(128,18,255); -- / 0-255,0-255,0-255
+   offset = Vector3.new(0,.75,0); -- / number,number,number (studs offset from head center)
+}
+
+local runservice = game:GetService('RunService');
+local lplr = game:GetService('Players').LocalPlayer
+local camera = workspace.CurrentCamera;
+local tau = math.pi*2
+local drawings = {};
+
+for i = 1,settings.sides do
+   drawings[i] = {Drawing.new('Line'),Drawing.new('Triangle')}
+   drawings[i][1].ZIndex = 2;
+   drawings[i][1].Thickness = 2;
+   drawings[i][2].ZIndex = 1;
+   drawings[i][2].Filled = true;
+end
+
+runservice.RenderStepped:Connect(function()
+   local pass = settings.enabled and lplr.Character and lplr.Character:FindFirstChild('Head') ~= nil and (camera.CFrame.p - camera.Focus.p).magnitude > settings.minCameraDistance and lplr.Character.Humanoid.Health > 0
+   for i = 1,#drawings do
+       local line,triangle = drawings[i][1], drawings[i][2];
+       if pass then
+           local color = settings.rainbow and Color3.fromHSV((tick() % 5 / 5 - (i / #drawings)) % 1,.5,1) or settings.color;
+           local pos = lplr.Character.Head.Position + settings.offset;
+           local topWorld = pos + Vector3.new(0,settings.height,0);
+
+           local last, next = (i/settings.sides)*tau, ((i+1)/settings.sides)*tau;
+           local lastWorld = pos + (Vector3.new(math.cos(last),0,math.sin(last))*settings.radius);
+           local nextWorld = pos + (Vector3.new(math.cos(next),0,math.sin(next))*settings.radius);
+           local lastScreen = camera:WorldToViewportPoint(lastWorld);
+           local nextScreen = camera:WorldToViewportPoint(nextWorld);
+           local topScreen = camera:WorldToViewportPoint(topWorld);
+
+           line.From = Vector2.new(lastScreen.X,lastScreen.Y);
+           line.To = Vector2.new(nextScreen.X,nextScreen.Y);
+           line.Color = color;
+           line.Transparency = settings.circleTransparency;
+           line.Visible = true;
+
+           triangle.PointA = Vector2.new(topScreen.X,topScreen.Y);
+           triangle.PointB = line.From;
+           triangle.PointC = line.To;
+           triangle.Color = color;
+           triangle.Transparency = settings.hatTransparency;
+           triangle.Visible = true;
+       else
+           line.Visible = false;
+           triangle.Visible = false;
+       end
+   end
+end)
+
+local BroSection = aTab:CreateSector("Main", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+BroSection:AddDropdown('Idle',{"Borock","Zombie","Werewolf","Ninja","Ud'zal","Mage","Toy"},"None", false, function(State)
+if State == "Borock" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=3293641938"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=3710131919"
+        elseif State == "Zombie" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=616158929"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=616160636"
+        elseif State == "Werewolf" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=1083195517"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=1083214717"
+        elseif State == "Ninja" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=656117400"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=656118341"
+        elseif State == "Ud'zal" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=3303162274"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=3303162274"
+        elseif State == "Mage" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=707742142"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=707855907"
+        elseif State == "Toy" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=782841498"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=782841498"
+        end
+end)
+
+BroSection:AddDropdown('Run', {"Zombie","Werewolf","Ninja","Mage","Toy"}, "None", false, function(State)
+if State == "Zombie" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=616163682"
+                  game.Players.LocalPlayer.Character.Animate.walk.WalkAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=616163682"    
+                
+        elseif State == "Werewolf" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=1083216690"
+        elseif State == "Ninja" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=656118852"
+        elseif State == "Mage" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=707861613"
+        elseif State == "Toy" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=782842708"
+        end
+    end)
+   
+   BroSection:AddDropdown('Jump', {"Zombie","Werewolf","Ninja","Mage","Toy","OldSchool"}, "None", false, function(State)
+    if State == "Zombie" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=616161997"
+        elseif State == "Werewolf" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=1083218792"
+        elseif State == "Ninja" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=656117878"
+        elseif State == "Mage" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=707853694"
+        elseif State == "Toy" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=782847020"
+        elseif State == "OldSchool" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=5319841935"
+        end
+end)
+      
+      BroSection:AddDropdown('Fall', {"Zombie","Werewolf","Ninja","Mage","Toy","OldSchool"}, "None", false, function(t)
+      if State == "Zombie" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=616157476"
+        elseif State == "Werewolf" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=1083189019"
+        elseif State == "Ninja" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=656115606"
+        elseif State == "Mage" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=707829716"
+        elseif State == "Toy" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=782846423"
+        elseif State == "OldSchool" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=5319839762"
+        end
+        end)
+      
+      local testSection = cTab:CreateSector("Main Credit", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddButton("trackwoc Owner", function(IhateGayPeople)
+
+end)
+
+
+testSection:AddButton("token.cc Owner/Scripter", function(IhateGayPeople)
+
+end)
+
+testSection:AddButton("Copy Discord Invite Link", function(IhateGayPeople)
+setclipboard("https://discord.gg/PTfXbMA6u8")
+end)
+
+bTab:CreateConfigSystem("left") --this is the config system
+
+       task.spawn(function ()
+            while true do
+                wait()
+                      if getgenv().Highlight == true then
+                      LocalHL.Parent = game.Players.LocalPlayer.Character
+                       LocalHL.FillColor = Color3.fromRGB(0, 0, 0)
+                       LocalHL.OutlineColor = Color3.fromRGB(0, 254, 252)
+                   else
+                       LocalHL.Parent = game.CoreGui
+                   end
+            end
+        end)
+       
+       task.spawn(function ()
+            while true do
+                wait()
+                if getgenv().CuhChams then
+                    for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                        if v:IsA("BasePart") then
+                            v.Material = "ForceField"
+                        end
+                    end
+                else
+                    for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                        if v:IsA("BasePart") then
+                            v.Material = "Plastic"
+                        end
+                    end
+                end
+            end
+        end)
+
+getgenv().Spin = false
+getgenv().SpinPower = 5
+getgenv().CursorSpin = false
+getgenv().CursorSpeed = 5
+getgenv().Rainbow = false
+getgenv().HitSounds = false
+getgenv().HitSoundsID = "rbxassetid://1053296915"
+getgenv().Volume = 10
+
+
+game:GetService("RunService").Heartbeat:connect(function()
+
+if getgenv().HitSounds then 
+    for i,v in pairs(LocalPlayer.Character:GetDescendants()) do 
+        if v:IsA("Sound") and v.Name == "ShootSound" then 
+            v.SoundId = getgenv().HitSoundsID
+            v.Volume  = getgenv().Volume
+        end 
+    end 
+end
+
+if Swastika.Visible then 
+    CursorPath.Swastika.Position = UDim2.fromOffset(LocalMouse.X - 43, LocalMouse.Y - 39)
+
+    if getgenv().Rainbow then 
+        CursorPath.Swastika.TextColor3 = Color3.fromHSV(tick() % 6 / 6, 1, 1)
+    end 
+
+    if getgenv().CursorSpin == true then 
+        CursorPath.Swastika.Rotation = CursorPath.Swastika.Rotation + getgenv().CursorSpeed
+    end 
+end 
+ 
+if getgenv().Spin then
+game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Rotation + getgenv().SpinPower
+end
+end)
