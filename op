@@ -1,0 +1,5 @@
+if getgenv().Device == "PC" then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/trackwoc/op/main/BEST%20PC%20SCRIPT"))() 
+elseif getgenv().Device == "Mobile" then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/trackwoc/op/main/best%20mobile%20script"))()
+end
