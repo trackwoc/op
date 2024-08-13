@@ -148,7 +148,7 @@ Swastika.TextTransparency =  0
 Swastika.Rotation = 45 
 Swastika.Visible = false
 
- local Settings = { 
+local Settings = { 
     SilentAim = { 
         Key = "C",
         AimAt = "HumanoidRootPart",
@@ -329,8 +329,9 @@ mt.__namecall = newcclosure(function(...)
     return old(...)
 end)
 
+
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/kpLzpNXc"))() --you can go into the github link and copy all of it and modify it for yourself.
-local Window = Library:CreateWindow("Token.cc (Pasted Lmao)", Vector2.new(460, 460), Enum.KeyCode.V) --you can change your UI keybind
+local Window = Library:CreateWindow("Token.cc", Vector2.new(460, 460), Enum.KeyCode.V) --you can change your UI keybind
 local LocalPlayer = game.Players.LocalPlayer
 local LocalMouse = LocalPlayer:GetMouse() 
 
@@ -343,7 +344,7 @@ local bTab = Window:CreateTab("Config")
 
 local testSection = AimingTab:CreateSector("Aimlock", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
 
-testSection:AddButton("Load Aimlock", function(IhateGayPeople)
+testSection:AddButton("Aimlock (Q)", function(IhateGayPeople)
 
 local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
 local Notify = AkaliNotif.Notify;
@@ -353,10 +354,11 @@ local Notify = AkaliNotif.Notify;
 getgenv().Target = true
 -- Configuration
 getgenv().Key = Enum.KeyCode.Q
-getgenv().Prediction = 0.14378
+getgenv().Prediction = 0.1411
 getgenv().ChatMode = false
 getgenv().NotifMode = true
     getgenv().PartMode = true
+    getgenv().AntiGroundShots = false
     getgenv().Partz = "HumanoidRootPart"
 getgenv().AutoPrediction = false
 getgenv().JumpOffset = 0
@@ -371,29 +373,11 @@ getgenv().LookAt = false
 getgenv().ViewAt = false
 getgenv().AirshotFunccc = false
 getgenv().AirshotPart = "LowerTorso"
+getgenv().AntiAimViewer = false
 getgenv().UseCam = false
 getgenv().Tracer = false
 getgenv().Resolver = false
 --
-
-local Tool = Instance.new("Tool")
-Tool.RequiresHandle = false
-Tool.Name = "Gay Tool"
-Tool.Parent = game.Players.LocalPlayer.Backpack
-
-local player = game.Players.LocalPlayer
-
-local function connectCharacterAdded()
-    player.CharacterAdded:Connect(onCharacterAdded)
-end
-
-connectCharacterAdded()
-
-player.CharacterRemoving:Connect(function()
-    Tool.Parent = game.Players.LocalPlayer.Backpack
-end)
-
-
     _G.Types = {
         Ball = Enum.PartType.Ball,
         Block = Enum.PartType.Block, 
@@ -402,7 +386,7 @@ end)
  
     --variables                 
     	local Tracer = Instance.new("Part", game.Workspace)
-    Tracer.Name = "Token.cc tap"	
+    Tracer.Name = "Token.cc Taps"	
     Tracer.Anchored = true		
     Tracer.CanCollide = false
     Tracer.Transparency = 0.3
@@ -454,10 +438,11 @@ end)
         return
     end
  
-    getgenv().valiansh = true
- 
- local LocalHL = Instance.new("Highlight")
-        Tool.Activated:Connect(function()
+    local UserInputService = game:GetService("UserInputService")
+
+    UserInputService.InputBegan:Connect(function(keygo,ok)
+           if (not ok) then
+           if (keygo.KeyCode == getgenv().Key) then
                if getgenv().Target == true then
                Locking = not Locking
  
@@ -509,7 +494,9 @@ end)
                end
  
  
- end     end   
+ end     end  
+ end
+ end
 end)
  
 	function getClosestPlayerToCursor()
@@ -661,9 +648,9 @@ end)
     elseif ping < 130 then
         getgenv().Prediction = 0.153456211988654432687543768432763246831111
     elseif ping < 125 then
-        getgenv().Prediction = 0.1482
+        getgenv().Prediction = 0.14435439864
     elseif ping < 110 then
-        getgenv().Prediction = 0.14378
+        getgenv().Prediction = 0.1472856538
     elseif ping < 105 then
         getgenv().Prediction = 0.14484357
     elseif ping < 90 then
@@ -687,13 +674,14 @@ testSection:AddTextbox("Prediction", nil, function(State)
     getgenv().Prediction = State
     end)
    
-   testSection:AddTextbox("Jump Offset", nil, function(State)
-    JumpOffsetNoWay = State
-    end)
-    
+   testSection:AddSlider("Jump Offset", -2, 0, 2, 100, function(Value)
+   JumpOffsetNoWay = Value
+   end)
+   
     testSection:AddDropdown('HitPart', {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso", "Penis"}, "HumanoidRootPart", false, function(Option)
 getgenv().Partz = "Option"
 end)
+
 
 local testSection = AimingTab:CreateSector("Auto Prediction", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
 
@@ -749,15 +737,19 @@ testSection:AddToggle("FOV Filled", false, function(first)
 circle.Filled = first
 end)
 
-testSection:AddTextbox("FOV Size", nil, function(State)
-circle.Radius = State
+testSection:AddSlider("FOV Transparency", 0, 0.7, 1, 100, function(Value)
+circle.Transparency = Value
+end)
+
+testSection:AddSlider("FOV Size", 5, 120, 500, 1, function(Value)
+circle.Radius = Value
 end)
 
 local testSection = AimingTab:CreateSector("Resolver", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
 
 testSection:AddDropdown('Ass Resolver', {"None","Desync","Reversed","Underworld","Slingshot","Swing"}, "None", false, function(Option)
 if State == "None" then
-         getgenv().Prediction = getgenv().Prediction
+         getgenv().Prediction = 0.1411
                      getgenv().Partz = "LowerTorso"
         elseif State == "Reversed" then
           getgenv().Partz = "HumanoidRootPart"
@@ -778,7 +770,7 @@ if State == "None" then
         end
         end)
         
-testSection:AddToggle("Resolver", false, function(first)
+testSection:AddToggle("OP Resolver", false, function(first)
 getgenv().Resolver = first
 end)
 
@@ -788,43 +780,21 @@ testSection:AddToggle("Target Strafe", false, function(first)
 getgenv().TargetStrafe = first
 end)
 
-testSection:AddTextbox("Distance", nil, function(State)
+testSection:AddSlider("Distance", 1, 8, 20, 2, function(Value)
 getgenv().StrafeRadius = State
 end)
 
-testSection:AddTextbox("Height", nil, function(State)
+testSection:AddSlider("Height", 1, 2, 20, 2, function(Value)
 getgenv().StrafeHeight = State
 end)
 
-testSection:AddTextbox("Speed", nil, function(State)
+testSection:AddSlider("Speed", 0.5, 10, 100, 2, function(Value)
 getgenv().StrafeSpeed = State
 end)
 
 local testSection = AimingTab:CreateSector("Camlock", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
 
-testSection:AddButton("Load Camlock", function(IhateGayPeople)
-getgenv().keytoclick = "X"
-tool = Instance.new("Tool")
-tool.RequiresHandle = false
-tool.Name = keytoclick
-tool.Activated:connect(function()
-    local vim = game:service("VirtualInputManager")
-vim:SendKeyEvent(true, keytoclick, false, game)
-end)
-tool.Parent = game.Players.LocalPlayer.Backpack
-
-
-local player = game.Players.LocalPlayer
-
-local function connectCharacterAdded()
-    player.CharacterAdded:Connect(onCharacterAdded)
-end
-
-connectCharacterAdded()
-
-player.CharacterRemoving:Connect(function()
-    tool.Parent = game.Players.LocalPlayer.Backpack
-end)
+testSection:AddButton("Camlock (X)", function(IhateGayPeople)
 -- [ Variables (Global Environmnet) ]
 
 --// Aimlock Settings
@@ -1202,6 +1172,9 @@ testSection:AddToggle("Auto Prediction", false, function(first)
 getgenv().ZazaPrediction = first
 end)
 
+local testSection = AimingTab:CreateSector("Silent Aim", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+
 testSection:AddToggle("Enabled", false, function(first)
 Settings.SilentAim.Enabled = first
 end)
@@ -1323,20 +1296,19 @@ end)
 
 ToggleBind:AddKeybind()
 
-testSection:AddTextbox("Speed", nil, function(State)
+testSection:AddSlider("Speed Amount", 1, 1, 5000, 1, function(State)
 getgenv().speedvalue = State
 end)
 
-local ToggleBind = testSection:AddToggle("Spinbot", false, function(e)
+local ToggleBind = testSection:AddToggle("SpinBot", false, function(e)
 getgenv().Spinbot = e
 end)
 
 ToggleBind:AddKeybind()
 
-testSection:AddTextbox("Spinbot Speed", nil, function(State)
+testSection:AddSlider("Spinbot Spin", 1, 1, 5000, 1, function(State)
 getgenv().urspeed = State
 end)
-
 
 	local testSection = gayTab:CreateSector("Anti Stomp", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
 
@@ -2145,18 +2117,18 @@ end)
             )
         end
     end)
-        
-              local testSection = gayTab:CreateSector("Custom Gun SFX", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+       
+       local testSection = gayTab:CreateSector("Custom Gun SFX", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
  testSection:AddToggle("Enable", false, function(first)
  getgenv().HitSounds = first
  end)
 testSection:AddTextbox("ID", nil, function(Text)
     getgenv().HitSoundsID = "rbxassetid://" .. Text .. ""
 end)
-testSection:AddTextbox("Volume", nil, function(Value)
+testSection:AddSlider("Volume", 0, 5, 10, 1, function(Value)
     getgenv().Volume = Value 
-end) 
-        
+end)
+
 local testSection = VisTab:CreateSector("Chams", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
 
 testSection:AddToggle("Chams Yourself", false, function(first)
@@ -2241,3 +2213,868 @@ game:GetService("RunService").RenderStepped:Connect(function()
                                 local cham = Instance.new("BoxHandleAdornment", k)
             
                                 cham.ZIndex = 10
+                                cham.Adornee = k
+                                cham.AlwaysOnTop = true
+                                cham.Size = k.Size
+                                cham.Transparency = 0.5
+                                cham.Color3 = Color3.fromRGB(105, 95, 245)
+                                cham.Name = "Cham"
+            
+                            end
+                        end
+                    else
+                        for _, k in pairs(v.Character:GetChildren()) do
+                            if k:IsA "BasePart" and k:FindFirstChild "Cham" then
+                                k:FindFirstChild("Cham"):Destroy()
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+
+local testSection = VisTab:CreateSector("ESP", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ImHaalfi/random-trash-project/main/Taffy%20ESP.txt"))()
+
+local ColorToggle = testSection:AddToggle("ESP Boxes", false, function(e)
+getgenv().taffy_esp.box.enabled = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255,255,255), function(ztx)
+   getgenv().taffy_esp.box.color1  = ztx
+end)
+
+
+local ColorToggle = testSection:AddToggle("ESP Healthbar", false, function(e)
+getgenv().taffy_esp.box.healthbar = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(4, 0, 255),function(ztx)
+   getgenv().taffy_esp.box.healthbarcolor  = ztx
+end)
+
+
+local ColorToggle = testSection:AddToggle("ESP Tracer", false, function(e)
+getgenv().taffy_esp.tracer.enabled = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255,255,255), function(ztx)
+getgenv().taffy_esp.tracer.color  = ztx
+end)
+
+
+local ColorToggle = testSection:AddToggle("ESP Name", false, function(e)
+getgenv().taffy_esp.name.enabled = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255,255,255), function(ztx)
+   getgenv().taffy_esp.name.color  = ztx
+end)
+
+local ColorToggle = testSection:AddToggle("Show Tool", false, function(e)
+getgenv().taffy_esp.Toolsshow.enable = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(147,39,161), function(ztx)
+   getgenv().taffy_esp.Toolsshow.color  = ztx
+end)
+  
+local testSection = VisTab:CreateSector("Custom Blood Image", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddDropdown('Blood Image', {"illuminati",
+        "Violet",
+        "Asuka",
+        "Rem",
+        "Astolfo",
+          "Blank"}, "None", false, function(Option)
+          if Option == "illuminati" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=487518317"
+     elseif Option == "Violet" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=10025463033" 
+     elseif Option == "Asuka" then
+          game.ReplicatedStorage.DMGIndicator.Image =  "http://www.roblox.com/asset/?id=10025498995"
+     elseif Option == "Rem" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=10025524529"
+     elseif Option == "Astolfo" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=10025538975"
+     elseif Option == "Blank" then
+          game.ReplicatedStorage.DMGIndicator.Image = "http://www.roblox.com/asset/?id=8968805098"
+     end
+    end)
+
+local BroSection = VisTab:CreateSector("Avatar", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+BroSection:AddToggle("Korblox", false, function(first)
+if first == true then
+game.Players.LocalPlayer.Character.RightFoot.MeshId = "http://www.roblox.com/asset/?id=902942093"
+			game.Players.LocalPlayer.Character.RightLowerLeg.MeshId = "http://www.roblox.com/asset/?id=902942093"
+			game.Players.LocalPlayer.Character.RightUpperLeg.MeshId = "http://www.roblox.com/asset/?id=902942096"
+			game.Players.LocalPlayer.Character.RightUpperLeg.TextureID = "http://roblox.com/asset/?id=902843398"
+			game.Players.LocalPlayer.Character.RightFoot.Transparency = 1
+			game.Players.LocalPlayer.Character.RightLowerLeg.Transparency = 1
+		else
+			game.Players.LocalPlayer.Character.RightFoot.MeshId = Storage.RightFootMeshID
+			game.Players.LocalPlayer.Character.RightLowerLeg.MeshId = Storage.RightLowerLegMeshID
+			game.Players.LocalPlayer.Character.RightUpperLeg.MeshId = Storage.RightUpperLegMeshID
+			game.Players.LocalPlayer.Character.RightUpperLeg.TextureID = Storage.RightUpperLegMeshID
+			game.Players.LocalPlayer.Character.RightFoot.Transparency = Storage.RightFootTransparency
+			game.Players.LocalPlayer.Character.RightLowerLeg.Transparency = Storage.RightLowerLegTransparency
+		end
+	end)
+	
+	BroSection:AddToggle("Blizzard Beast Mode", false, function(first)
+	if first == true then
+	pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://209712379"
+				end
+			)
+		else
+			pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = Storage.Face
+				end
+			)
+		end
+	end)
+	
+	BroSection:AddToggle("SSHF", false, function(first)
+	if first == true then
+	pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://494290547"
+				end
+			)
+		else
+			pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = Storage.Face
+				end
+			)
+		end
+	end) 
+	
+	BroSection:AddToggle("Beast Mode", false, function(first)
+	if first == true then
+	pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://127959433"
+				end
+			)
+		else
+			pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = Storage.Face
+				end
+			)
+		end
+	end)
+	
+	BroSection:AddToggle("Playful Vampire", false, function(first)
+	if v == true then
+pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://2409281591"
+				end
+			)
+		else
+			pcall(
+				function()
+					game.Players.LocalPlayer.Character.Head.face.Texture = Storage.Face
+				end
+			)
+		end
+	end)
+	
+	local testSection = VisTab:CreateSector("Crosshair", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+local ColorToggle = testSection:AddToggle("Draw Ugly Crosshair", false, function(e)
+game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Visible = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Top.Visible = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Bottom.Visible = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Right.Visible = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Left.Visible = e
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255,255,255), function(e)
+game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.BackgroundColor3 = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Top.BackgroundColor3 = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Bottom.BackgroundColor3 = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Right.BackgroundColor3 = e
+	game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Left.BackgroundColor3 = e
+end)
+
+testSection:AddToggle("Spin", false, function(first)
+getgenv().Spin = first
+end)
+
+testSection:AddSlider("Spinning Crosshair Speed", 0, 5, 50, 1, function(Value)
+    getgenv().SpinPower = Value
+end)
+
+testSection:AddToggle("Swastika", false, function(first)
+Swastika.Visible = first
+end)
+
+testSection:AddToggle("Rainbow Swastika", false, function(first)
+getgenv().Rainbow = first
+end)
+
+testSection:AddToggle("Spinning Swastika", false, function(first)
+getgenv().CursorSpin = first
+end)
+
+testSection:AddSlider("Spinning Swastika Speed", 0, 5, 50, 1, function(Value)
+getgenv().CursorSpeed = Value
+end)
+
+local BroSection = VisTab:CreateSector("Other", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+
+local ColorToggle = BroSection:AddToggle("Ambient", false, function(gay)
+if gay == true then
+game:GetService("Lighting").Ambient = Color3.fromRGB(0, 254, 252)
+else
+game:GetService("Lighting").Ambient = Color3.fromRGB(0,0,0)
+end
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(0, 254, 252), function(ztx)
+if gay == true then
+game:GetService("Lighting").Ambient = ztx
+end
+end)
+
+local ColorToggle = BroSection:AddToggle("World Accent", false, function(gay)
+if gay == true then
+game:GetService("Lighting").ColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+else
+game:GetService("Lighting").ColorCorrection.TintColor = Color3.fromRGB(255, 255, 255)
+end
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255, 0, 0), function(ztx)
+if gay == true then
+game:GetService("Lighting").ColorCorrection.TintColor = ztx
+end
+end)
+
+BroSection:AddTextbox("Contrast (Max 500)", nil, function(State)
+ game:GetService("Lighting").ColorCorrection.Contrast = State
+end)
+
+BroSection:AddTextbox("Enter New Saturtation", nil, function(State)
+game.Lighting.ColorCorrection.Saturation = tonumber(State)
+end)
+
+BroSection:AddButton("Reset Saturtation", function(IhateGayPeople)
+game.Lighting.ColorCorrection.Saturation = 0.10000000149012
+end)
+
+
+BroSection:AddTextbox("Enter New Brightness", nil, function(State)
+game.Lighting.Brightness = tonumber(State)
+end)
+
+BroSection:AddButton("Reset Brightness", function(IhateGayPeople)
+game.Lighting.Brightness = 1
+end)
+
+BroSection:AddToggle("GlobalShadows", false, function(first)
+game:GetService("Lighting").GlobalShadows = first
+end)
+
+local ColorToggle = BroSection:AddToggle("Custom Fog Color", false, function(gay)
+if gay == true then
+game:GetService("Lighting").FogColor = Color3.fromRGB(0, 255, 0)
+else
+game:GetService("Lighting").FogColor = Color3.fromRGB(0,0,0)
+end
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(0, 255, 0), function(ztx)
+if gay == true then
+game:GetService("Lighting").FogColor = ztx
+end
+end)
+
+BulletTracers = false
+bullet_tracer_color = Color3.fromRGB(255, 49, 49)
+---------------------------------------------------------------------------------------------------------------------------
+
+function GetGun()
+    if game.Players.LocalPlayer.Character then
+        for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if v:FindFirstChild 'Ammo' then
+                return v
+            end
+        end
+    end
+    return nil
+end
+
+local Services = {
+    Players = game:GetService("Players"),
+    UserInputService = game:GetService("UserInputService"),
+    RunService = game:GetService("RunService"),
+}
+
+local Local = {
+    Player = Services.Players.LocalPlayer,
+    Mouse = Services.Players.LocalPlayer:GetMouse(),
+}
+local Other = {
+    Camera = workspace.CurrentCamera,
+    BeamPart = Instance.new("Part", workspace)
+}
+
+Other.BeamPart.Name = "BeamPart"
+Other.BeamPart.Transparency = 1
+local Settings = {
+    StartColor = bullet_tracer_color,
+    EndColor = bullet_tracer_color,
+    StartWidth = 3,
+    EndWidth = 3,
+    ShowImpactPoint = true,
+    ImpactTransparency = 0.5,
+    ImpactColor = Color3.new(1, 1, 1),
+    Time = 1,
+}
+game:GetService "RunService".Heartbeat:Connect(function()
+    if game:GetService("Workspace").Ignored:FindFirstChild 'BULLET_RAYS' and BulletTracers then
+        game:GetService("Workspace").Ignored.BULLET_RAYS:Destroy()
+    end
+end)
+local funcs = {}
+Local.Mouse.TargetFilter = Other.BeamPart
+function funcs:Beam(v1, v2)
+    v2 = Vector3.new(v2.X - 0.1, v2.Y + 0.2, v2.Z)
+    local colorSequence = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, bullet_tracer_color),
+        ColorSequenceKeypoint.new(1, bullet_tracer_color),
+    })
+    local Part = Instance.new("Part", Other.BeamPart)
+    Part.Size = Vector3.new(0, 0, 0)
+    Part.Massless = true
+    Part.Transparency = 1
+    Part.CanCollide = false
+    Part.Position = v1
+    Part.Anchored = true
+    local Attachment = Instance.new("Attachment", Part)
+    local Part2 = Instance.new("Part", Other.BeamPart)
+    Part2.Size = Vector3.new(0, 0, 0)
+    Part2.Transparency = 0
+    Part2.CanCollide = false
+    Part2.Position = v2
+    Part2.Anchored = true
+    Part2.Material = Enum.Material.ForceField
+    Part2.Color = Settings.ImpactColor
+    Part2.Massless = true
+    local Attachment2 = Instance.new("Attachment", Part2)
+    local Beam = Instance.new("Beam", Part)
+    Beam.FaceCamera = true
+    Beam.Color = colorSequence
+    Beam.Attachment0 = Attachment
+    Beam.Attachment1 = Attachment2
+    Beam.LightEmission = 6
+    Beam.LightInfluence = 1
+    Beam.Width0 = Settings.StartWidth
+    Beam.Width1 = Settings.EndWidth
+    Beam.Texture = "http://www.roblox.com/asset/?id=9150663556"
+    Beam.TextureSpeed = 2
+    Beam.TextureLength = 1
+    delay(Settings.Time, function()
+        Part:Destroy()
+        Part2:Destroy()
+    end)
+end
+
+spawn(function()
+    while task.wait(0.5) do
+        gun = GetGun()
+        if gun then
+            LastAmmo = gun.Ammo.Value
+            gun.Ammo:GetPropertyChangedSignal("Value"):Connect(function()
+                if BulletTracers and gun.Ammo.Value < LastAmmo then
+                    LastAmmo = gun.Ammo.Value
+                    funcs:Beam(gun.Handle.Position, Local.Mouse.hit.p)
+                end
+            end)
+        end
+    end
+end)
+
+
+
+local ColorToggle = BroSection:AddToggle("Bullet Tracers", false, function(gay)
+BulletTracers = gay
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(255, 49, 49), function(ztx)
+bullet_tracer_color = ztx
+end)
+
+BroSection:AddDropdown('SkyBoxes', {"None","Void Sky", "Purple Nebula", "Night Sky", "Morning Glow", "Neptune","The Rock","Among Us"}, "None", false, function(t)
+if t == "None" then
+game:GetService("Lighting").Sky.SkyboxBk = "rbxassetid://600830446"
+        game:GetService("Lighting").Sky.SkyboxDn = "rbxassetid://600831635"
+        game:GetService("Lighting").Sky.SkyboxFt = "rbxassetid://600832720"
+        game:GetService("Lighting").Sky.SkyboxLf = "rbxassetid://600886090"
+         game:GetService("Lighting").Sky.SkyboxRt = "rbxassetid://600833862"
+          game:GetService("Lighting").Sky.SkyboxUp = "rbxassetid://600835177"
+elseif t == "Void Sky" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=9851144466"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=9851144249"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=9851144099"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=9851143942"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=9851143761"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=9851143257"
+elseif t == "Purple Nebula" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=159454299"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=159454296"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=159454293"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=159454286"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=159454300"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=159454288"
+elseif t == "Night Sky" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=12064107"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=12064152"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=12064121"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=12063984"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=12064115"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=12064131"
+elseif t == "Morning Glow" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=1417494030"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=1417494146"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=1417494253"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=1417494402"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=1417494253"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=1417494643"
+elseif t == "Neptune" then
+game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=218955819"
+game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=218953419"
+game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=218954524"
+game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=218958493"
+game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=218957134"
+game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=218950090"
+elseif t == "The Rock" then
+game:GetService("Lighting").Sky.SkyboxBk = "http://www.roblox.com/asset/?id=8583043737"
+        game:GetService("Lighting").Sky.SkyboxDn = "http://www.roblox.com/asset/?id=8583043737"
+        game:GetService("Lighting").Sky.SkyboxFt = "http://www.roblox.com/asset/?id=8583043737"
+        game:GetService("Lighting").Sky.SkyboxLf = "http://www.roblox.com/asset/?id=8583043737"
+         game:GetService("Lighting").Sky.SkyboxRt = "http://www.roblox.com/asset/?id=8583043737"
+          game:GetService("Lighting").Sky.SkyboxUp = "http://www.roblox.com/asset/?id=8583043737"
+          elseif t == "Among Us" then
+          game:GetService("Lighting").Sky.SkyboxBk = "http://www.roblox.com/asset/?id=5850251189"
+        game:GetService("Lighting").Sky.SkyboxDn = "http://www.roblox.com/asset/?id=5850251189"
+        game:GetService("Lighting").Sky.SkyboxFt = "http://www.roblox.com/asset/?id=5850251189"
+        game:GetService("Lighting").Sky.SkyboxLf = "http://www.roblox.com/asset/?id=5850251189"
+         game:GetService("Lighting").Sky.SkyboxRt = "http://www.roblox.com/asset/?id=5850251189"
+          game:GetService("Lighting").Sky.SkyboxUp = "http://www.roblox.com/asset/?id=411367386" 
+end
+end)
+
+local testSection = VisTab:CreateSector("Custom Character", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+function Weld(x,y)
+       local W = Instance.new("Weld")
+       W.Part0 = x
+       W.Part1 = y
+       local CJ = CFrame.new(x.Position)
+       local C0 = x.CFrame:inverse()*CJ
+       local C1 = y.CFrame:inverse()*CJ
+       W.C0 = C0
+       W.C1 = C1
+       W.Parent = x
+end
+
+testSection:AddToggle('Custom Character', false, function(state)
+    if state then 
+        for i,v in pairs(LocalPlayer.Character:GetDescendants()) do 
+            if v:IsA("BasePart") or v:IsA("Decal") then 
+                v.Transparency = 1 
+            end 
+        end 
+        
+getgenv().Custom = LocalPlayer.Character:WaitForChild("Humanoid").Died:Connect(function()
+fuc:Destroy()
+wait(5)
+fuc = Instance.new("Part",workspace) 
+fuc.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+fuc.CanCollide = false
+fuck = Instance.new("SpecialMesh")
+fuck.Parent = fuc
+fuck.MeshType ="FileMesh"
+    if getgenv().CharacterType  == "AmongUs" then 
+        fuck.Scale=Vector3.new(0.2,0.2,0.2) 
+        fuck.TextureId="http://www.roblox.com/asset/?id=6686375937" 
+        fuck.MeshId="http://www.roblox.com/asset/?id=6686375902"
+    elseif getgenv().CharacterType  == "Stewie" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) 
+        fuck.TextureId="http://www.roblox.com/asset/?id=3692134820"
+        fuck.MeshId="http://www.roblox.com/asset/?id=3692134742" 
+    elseif getgenv().CharacterType  == "Sonic" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) 
+        fuck.TextureId="http://www.roblox.com/asset/?id=6901422268"
+        fuck.MeshId="http://www.roblox.com/asset/?id=6901422170"
+    elseif getgenv().CharacterType  == "Chicken" then     
+        fuck.Scale=Vector3.new(3,3,3) 
+        fuck.TextureId="http://www.roblox.com/asset/?id=2114220248" 
+        fuck.MeshId="http://www.roblox.com/asset/?id=2114220154" 
+end 
+
+    Weld(LocalPlayer.Character.HumanoidRootPart,fuc)
+
+    for i,v in pairs(LocalPlayer.Character:GetDescendants()) do 
+        if v:IsA("BasePart") or v:IsA("Decal") then 
+            v.Transparency = 1
+        end 
+    end 
+
+end)
+        
+        fuc = Instance.new("Part",workspace) 
+        fuc.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+        fuc.CanCollide = false
+        fuck = Instance.new("SpecialMesh")
+        fuck.Parent = fuc
+        fuck.MeshType ="FileMesh"
+
+        if getgenv().CharacterType  == "AmongUs" then 
+        fuck.Scale=Vector3.new(0.2,0.2,0.2) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=6686375937" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=6686375902" -- Mesh Id
+    elseif getgenv().CharacterType  == "Stewie" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=3692134820" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=3692134742" -- Mesh Id
+    elseif getgenv().CharacterType  == "Sonic" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=6901422268" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=6901422170"
+    elseif getgenv().CharacterType  == "Chicken" then     
+        fuck.Scale=Vector3.new(3,3,3) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=2114220248" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=2114220154" -- Mesh Id
+    end 
+
+        Weld(LocalPlayer.Character.HumanoidRootPart,fuc)
+        else 
+        fuc:Destroy()
+        
+        for i,v in pairs(LocalPlayer.Character:GetDescendants()) do 
+            if v:IsA("BasePart") or v:IsA("Decal") then 
+                v.Transparency = 0 
+            end 
+        end 
+        
+        getgenv().Custom:Disconnect()
+        
+        LocalPlayer.Character.HumanoidRootPart.Transparency = 1
+    end 
+end) 
+
+testSection:AddDropdown("Character Type", {"AmongUs", "Stewie", "Sonic", "Chicken"}, "AmongUs", false, function(Option)
+    getgenv().CharacterType = Option
+    
+    if Option == "AmongUs" then 
+        fuck.Scale=Vector3.new(0.2,0.2,0.2) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=6686375937" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=6686375902" -- Mesh Id
+    elseif Option == "Stewie" then 
+        fuck.Scale=Vector3.new(0.1,0.1,0.1) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=3692134820" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=3692134742" -- Mesh Id
+    elseif Option == "Sonic" then 
+        fuck.Scale=Vector3.new(0.25,0.25,0.25) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=6901422268" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=6901422170"
+    elseif Option == "Chicken" then     
+        fuck.Scale=Vector3.new(3,3,3) --sizerbxassetid://6901422268
+        fuck.TextureId="http://www.roblox.com/asset/?id=2114220248" --Texture / Skin
+        fuck.MeshId="http://www.roblox.com/asset/?id=2114220154" -- Mesh Id
+    end 
+end) 
+
+local testSection = VisTab:CreateSector("China Hat", "right")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+local ColorToggle = testSection:AddToggle("Enable", false, function(gay)
+settings.enabled = gay
+end)
+
+ColorToggle:AddColorpicker(Color3.fromRGB(128,18,255), function(ztx)
+settings.color = ztx
+end)
+
+testSection:AddToggle("Rainbow", false, function(first)
+settings.rainbow = first
+end)
+
+testSection:AddTextbox("Radius", nil, function(State)
+settings.radius = State
+end)
+
+testSection:AddTextbox("Sides", nil, function(State)
+settings.sides = State
+end)
+
+
+
+settings = {
+   enabled = false; -- / true / false
+   minCameraDistance = 1; -- / any number
+   hatTransparency = .35; -- / 0 - 1 (0 being invisible)
+   circleTransparency = 1; -- / 0 - 1 (0 being invisible)
+   height = .75; -- / any number
+   radius = 1; -- /-- any number
+   sides = 25; -- / any number
+   rainbow = false; -- / true / false
+   color = Color3.fromRGB(128,18,255); -- / 0-255,0-255,0-255
+   offset = Vector3.new(0,.75,0); -- / number,number,number (studs offset from head center)
+}
+
+local runservice = game:GetService('RunService');
+local lplr = game:GetService('Players').LocalPlayer
+local camera = workspace.CurrentCamera;
+local tau = math.pi*2
+local drawings = {};
+
+for i = 1,settings.sides do
+   drawings[i] = {Drawing.new('Line'),Drawing.new('Triangle')}
+   drawings[i][1].ZIndex = 2;
+   drawings[i][1].Thickness = 2;
+   drawings[i][2].ZIndex = 1;
+   drawings[i][2].Filled = true;
+end
+
+runservice.RenderStepped:Connect(function()
+   local pass = settings.enabled and lplr.Character and lplr.Character:FindFirstChild('Head') ~= nil and (camera.CFrame.p - camera.Focus.p).magnitude > settings.minCameraDistance and lplr.Character.Humanoid.Health > 0
+   for i = 1,#drawings do
+       local line,triangle = drawings[i][1], drawings[i][2];
+       if pass then
+           local color = settings.rainbow and Color3.fromHSV((tick() % 5 / 5 - (i / #drawings)) % 1,.5,1) or settings.color;
+           local pos = lplr.Character.Head.Position + settings.offset;
+           local topWorld = pos + Vector3.new(0,settings.height,0);
+
+           local last, next = (i/settings.sides)*tau, ((i+1)/settings.sides)*tau;
+           local lastWorld = pos + (Vector3.new(math.cos(last),0,math.sin(last))*settings.radius);
+           local nextWorld = pos + (Vector3.new(math.cos(next),0,math.sin(next))*settings.radius);
+           local lastScreen = camera:WorldToViewportPoint(lastWorld);
+           local nextScreen = camera:WorldToViewportPoint(nextWorld);
+           local topScreen = camera:WorldToViewportPoint(topWorld);
+
+           line.From = Vector2.new(lastScreen.X,lastScreen.Y);
+           line.To = Vector2.new(nextScreen.X,nextScreen.Y);
+           line.Color = color;
+           line.Transparency = settings.circleTransparency;
+           line.Visible = true;
+
+           triangle.PointA = Vector2.new(topScreen.X,topScreen.Y);
+           triangle.PointB = line.From;
+           triangle.PointC = line.To;
+           triangle.Color = color;
+           triangle.Transparency = settings.hatTransparency;
+           triangle.Visible = true;
+       else
+           line.Visible = false;
+           triangle.Visible = false;
+       end
+   end
+end)
+
+local BroSection = aTab:CreateSector("Main", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+BroSection:AddDropdown('Idle',{"Borock","Zombie","Werewolf","Ninja","Ud'zal","Mage","Toy"},"None", false, function(State)
+if State == "Borock" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=3293641938"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=3710131919"
+        elseif State == "Zombie" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=616158929"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=616160636"
+        elseif State == "Werewolf" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=1083195517"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=1083214717"
+        elseif State == "Ninja" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=656117400"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=656118341"
+        elseif State == "Ud'zal" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=3303162274"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=3303162274"
+        elseif State == "Mage" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=707742142"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=707855907"
+        elseif State == "Toy" then
+            game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId =
+                "http://www.roblox.com/asset/?id=782841498"
+            game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId =
+                "http://www.roblox.com/asset/?id=782841498"
+        end
+end)
+
+BroSection:AddDropdown('Run', {"Zombie","Werewolf","Ninja","Mage","Toy"}, "None", false, function(State)
+if State == "Zombie" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=616163682"
+                  game.Players.LocalPlayer.Character.Animate.walk.WalkAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=616163682"    
+                
+        elseif State == "Werewolf" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=1083216690"
+        elseif State == "Ninja" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=656118852"
+        elseif State == "Mage" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=707861613"
+        elseif State == "Toy" then
+            game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=782842708"
+        end
+    end)
+   
+   BroSection:AddDropdown('Jump', {"Zombie","Werewolf","Ninja","Mage","Toy","OldSchool"}, "None", false, function(State)
+    if State == "Zombie" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=616161997"
+        elseif State == "Werewolf" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=1083218792"
+        elseif State == "Ninja" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=656117878"
+        elseif State == "Mage" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=707853694"
+        elseif State == "Toy" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=782847020"
+        elseif State == "OldSchool" then
+            game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=5319841935"
+        end
+end)
+      
+      BroSection:AddDropdown('Fall', {"Zombie","Werewolf","Ninja","Mage","Toy","OldSchool"}, "None", false, function(t)
+      if State == "Zombie" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=616157476"
+        elseif State == "Werewolf" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=1083189019"
+        elseif State == "Ninja" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=656115606"
+        elseif State == "Mage" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=707829716"
+        elseif State == "Toy" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=782846423"
+        elseif State == "OldSchool" then
+            game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId =
+                "http://www.roblox.com/asset/?id=5319839762"
+        end
+        end)
+      
+      local testSection = cTab:CreateSector("Main Credit", "left")  --you can  change the section code, for example "testsection" can be changed to "FunnyCoolSection" etc.
+
+testSection:AddButton("trackwoc Owner/Helper", function(IhateGayPeople)
+
+end)
+
+
+testSection:AddButton("token.cc Owner/Scripter", function(IhateGayPeople)
+
+end)
+
+testSection:AddButton("Copy Discord Invite Link", function(IhateGayPeople)
+setclipboard("https://discord.gg/PTfXbMA6u8")
+end)
+
+bTab:CreateConfigSystem("left") --this is the config system
+
+getgenv().Spin = false
+getgenv().SpinPower = 5
+getgenv().CursorSpin = false
+getgenv().CursorSpeed = 5
+getgenv().Rainbow = false
+getgenv().HitSounds = false
+getgenv().HitSoundsID = "rbxassetid://1053296915"
+getgenv().Volume = 10
+
+
+game:GetService("RunService").Heartbeat:connect(function()
+
+if getgenv().HitSounds then 
+    for i,v in pairs(LocalPlayer.Character:GetDescendants()) do 
+        if v:IsA("Sound") and v.Name == "ShootSound" then 
+            v.SoundId = getgenv().HitSoundsID
+            v.Volume  = getgenv().Volume
+        end 
+    end 
+end
+
+if Swastika.Visible then 
+    CursorPath.Swastika.Position = UDim2.fromOffset(LocalMouse.X - 43, LocalMouse.Y - 39)
+
+    if getgenv().Rainbow then 
+        CursorPath.Swastika.TextColor3 = Color3.fromHSV(tick() % 6 / 6, 1, 1)
+    end 
+
+    if getgenv().CursorSpin == true then 
+        CursorPath.Swastika.Rotation = CursorPath.Swastika.Rotation + getgenv().CursorSpeed
+    end 
+end 
+ 
+if getgenv().Spin then
+game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Rotation = game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.Aim.Rotation + getgenv().SpinPower
+end
+end)
+
+       task.spawn(function ()
+            while true do
+                wait()
+                      if getgenv().Highlight == true then
+                      LocalHL.Parent = game.Players.LocalPlayer.Character
+                       LocalHL.FillColor = Color3.fromRGB(0, 0, 0)
+                       LocalHL.OutlineColor = Color3.fromRGB(0, 254, 252)
+                   else
+                       LocalHL.Parent = game.CoreGui
+                   end
+            end
+        end)
+       
+       task.spawn(function ()
+            while true do
+                wait()
+                if getgenv().CuhChams then
+                    for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                        if v:IsA("BasePart") then
+                            v.Material = "ForceField"
+                        end
+                    end
+                else
+                    for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                        if v:IsA("BasePart") then
+                            v.Material = "Plastic"
+                        end
+                    end
+                end
+            end
+        end)
