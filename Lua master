@@ -1,4 +1,4 @@
-getgenv().LuaScripting = {
+getgenv().Wraith = {
     ['Camlock'] = {
         ['Prediction'] = {
             ['Horizontal'] = 0.1768521,
@@ -237,7 +237,7 @@ local function CreateButton(name, position, callback)
     return Button
 end
 
-local CamlockButton = CreateButton("blatant.cc", UDim2.new(0.5, -50, 0, 10), function()
+local CamlockButton = CreateButton("luascripting.cc", UDim2.new(0.5, -50, 0, 10), function()
     CamlockState = not CamlockState
     if CamlockState then
         Target = GetClosestToCenter()
