@@ -1,0 +1,286 @@
+getgenv().LuaScripting = {
+    ['Camlock'] = {
+        ['Prediction'] = {
+            ['Horizontal'] = 0.1768521,
+            ['Vertical'] = 0.1245678
+        },
+        ['Smoothness'] = {
+            ['Enabled'] = true,
+            ['Amount'] = 0.89
+        },
+        ['Offset'] = {
+            ['Vertical'] = -1
+        },
+        ['Fov'] = {
+            ['Visible'] = true,
+            ['Radius'] = 50,
+            ['Color'] = Color3.new(1, 1, 1),
+            ['Stick'] = true
+        },
+        ['Tracer'] = {
+            ['Visible'] = true,
+            ['Color'] = Color3.new(1, 1, 1)
+        },
+        ['Hit'] = "HumanoidRootPart"
+    }
+}
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CoreGui = game:GetService("CoreGui")
+local Client = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+local CamlockState = false
+local Target = nil
+
+local function CheckAntiAim(player)
+    if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return false end
+    local hrp = player.Character.HumanoidRootPart
+    if hrp.Velocity.Y < -70 or hrp.Velocity.Y > 70 then return true end
+    if hrp.Velocity.X > 50 or hrp.Velocity.X < -50 then return true end
+    if hrp.Velocity.Z > 50 or hrp.Velocity.Z < -50 then return true end
+    if hrp.Velocity.Magnitude > 200 then return true end
+    if hrp.Velocity.Magnitude > 450 or hrp.Velocity.Magnitude < -450 then return true end
+    return false
+end
+
+local function GetClosestToCenter()
+    local ClosestPlayer = nil
+    local ShortestDistance = math.huge
+    local CenterScreen = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+
+    for _, Player in pairs(Players:GetPlayers()) do
+        if Player ~= Client and Player.Character and Player.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+            local ScreenPosition, OnScreen = Camera:WorldToScreenPoint(Player.Character[getgenv().Wraith.Camlock['Hit']].Position)
+            if OnScreen then
+                local Distance = (Vector2.new(ScreenPosition.X, ScreenPosition.Y) - CenterScreen).Magnitude
+                if Distance < ShortestDistance and Distance <= getgenv().Wraith['Camlock']['Fov']['Radius'] * 3.067 then
+                    ClosestPlayer = Player
+                    ShortestDistance = Distance
+                end
+            end
+        end
+    end
+    return ClosestPlayer
+end
+
+local function PredictPosition(Target)
+    if Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+        local TargetPart = Target.Character[getgenv().Wraith.Camlock['Hit']]
+        local Position, Velocity
+
+        if CheckAntiAim(Target) then
+            local character = Target.Character
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                local MoveDirection = humanoid.MoveDirection
+                local walkSpeed = humanoid.WalkSpeed
+                Velocity = MoveDirection * walkSpeed
+                Position = character.HumanoidRootPart.Position
+            else
+                Position = TargetPart.Position
+                Velocity = TargetPart.Velocity
+            end
+        else
+            Position = TargetPart.Position
+            Velocity = TargetPart.Velocity
+        end
+
+        local Prediction
+        local humanoid = Target.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid and (humanoid:GetState() == Enum.HumanoidStateType.Jumping or humanoid:GetState() == Enum.HumanoidStateType.Freefall) then
+            Prediction = getgenv().Wraith['Camlock']['Prediction']['Vertical']
+        else
+            Prediction = getgenv().Wraith['Camlock']['Prediction']['Horizontal']
+        end
+
+        return Position + (Velocity * Prediction)
+    end
+    return nil
+end
+
+local function GetEvent()
+    for _, v in pairs(ReplicatedStorage:GetChildren()) do
+        if v.Name == "MainEvent" or v.Name == "Bullets" or v.Name == ".gg/untitledhood" or v.Name == "Remote" or v.Name == "MAINEVENT" or v.Name == ".gg/flamehood" then
+            return v
+        end
+    end
+end
+
+local function GetArgs()
+    local PlaceId = game.PlaceId
+    if PlaceId == 2788229376 or PlaceId == 4106313503 or PlaceId == 11143225577 or PlaceId == 17319408836 or PlaceId == 18110728826 then
+        return "UpdateMousePos"
+    elseif PlaceId == 5602055394 or PlaceId == 7951883376 then
+        return "MousePos"
+    elseif PlaceId == 10100958808 or PlaceId == 12645617354 or PlaceId == 14171242539 or PlaceId == 14412436145 or PlaceId == 14412355918 or PlaceId == 14413720089 or PlaceId == 17403265390 or PlaceId == 17403166075 or PlaceId == 17403262882 or PlaceId == 15186202290 or PlaceId == 15763494605 then
+        return "MOUSE"
+    elseif PlaceId == 9825515356 then
+        return "MousePosUpdate"
+    elseif PlaceId == 15166543806 then
+        return "MoonUpdateMousePos"
+    elseif PlaceId == 16033173781 or PlaceId == 7213786345 then
+        return "UpdateMousePosI"
+    else
+        return "UpdateMousePos"
+    end
+end
+
+RunService.RenderStepped:Connect(function()
+    if CamlockState and Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+        local predictedPosition = PredictPosition(Target)
+        if predictedPosition then
+            local targetPosition = predictedPosition + Vector3.new(0, getgenv().Wraith['Camlock']['Offset']['Vertical'], 0)
+            if getgenv().Wraith['Camlock']['Smoothness']['Enabled'] then
+                Camera.CFrame = Camera.CFrame:Lerp(CFrame.new(Camera.CFrame.Position, targetPosition), getgenv().Wraith['Camlock']['Smoothness']['Amount'])
+            else
+                Camera.CFrame = CFrame.new(Camera.CFrame.Position, targetPosition)
+            end
+            local Event = GetEvent()
+            if Event then
+                Event:FireServer(GetArgs(), predictedPosition)
+            end
+        end
+    end
+end)
+
+local function CharAdded(Character)
+    Character.ChildAdded:Connect(function(Tool)
+        if Tool:IsA("Tool") then
+            Tool.Activated:Connect(function()
+                if CamlockState and Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+                    local predictedPosition = PredictPosition(Target)
+                    if predictedPosition then
+                        local Event = GetEvent()
+                        if Event then
+                            Event:FireServer(GetArgs(), predictedPosition)
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end
+
+Client.CharacterAdded:Connect(CharAdded)
+if Client.Character then
+    CharAdded(Client.Character)
+end
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = CoreGui
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local function CreateButton(name, position, callback)
+    local Button = Instance.new("TextButton")
+    Button.Size = UDim2.new(0, 100, 0, 50)
+    Button.Position = position
+    Button.Text = name
+    Button.Parent = ScreenGui
+    Button.BorderSizePixel = 0
+    Button.Font = Enum.Font.Arcade
+    Button.TextColor3 = Color3.new(1, 1, 1)
+    Button.TextSize = 16
+    Button.AutoButtonColor = false
+
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 9)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
+    }
+    UIGradient.Parent = Button
+
+    local Corner = Instance.new("UICorner")
+    Corner.CornerRadius = UDim.new(0, 8)
+    Corner.Parent = Button
+
+    local Shadow = Instance.new("Frame")
+    Shadow.Size = UDim2.new(1, 6, 1, 6)
+    Shadow.Position = UDim2.new(0, -3, 0, -3)
+    Shadow.BackgroundColor3 = Color3.new(0, 0, 0)
+    Shadow.BackgroundTransparency = 0.7
+    Shadow.ZIndex = -1
+    Shadow.Parent = Button
+
+    local ShadowCorner = Instance.new("UICorner")
+    ShadowCorner.CornerRadius = UDim.new(0, 8)
+    ShadowCorner.Parent = Shadow
+
+    Button.MouseButton1Click:Connect(callback)
+
+    local dragStart, startPos
+
+    Button.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragStart = input.Position
+            startPos = Button.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragStart = nil
+                end
+            end)
+        end
+    end)
+
+    Button.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseMovement then
+            if dragStart then
+                local delta = input.Position - dragStart
+                Button.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+            end
+        end
+    end)
+    
+    return Button
+end
+
+local CamlockButton = CreateButton("blatant.cc", UDim2.new(0.5, -50, 0, 10), function()
+    CamlockState = not CamlockState
+    if CamlockState then
+        Target = GetClosestToCenter()
+    else
+        Target = nil
+    end
+end)
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Thickness = 1
+FOVCircle.NumSides = 50
+FOVCircle.Filled = false
+
+local Tracer = Drawing.new("Line")
+Tracer.Thickness = 1
+
+RunService.RenderStepped:Connect(function()
+    FOVCircle.Visible = getgenv().Wraith['luascripting.cc']['Fov']['Visible']
+    FOVCircle.Radius = getgenv().Wraith['luascripting.cc']['Fov']['Radius'] * 3.067
+    FOVCircle.Color = getgenv().Wraith['luascripting.cc']['Fov']['Color']
+    
+    if CamlockState and getgenv().Wraith['luascripting.cc']['Fov']['Stick'] and Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+        local targetPosition, onScreen = Camera:WorldToViewportPoint(Target.Character[getgenv().Wraith.Camlock['Hit']].Position)
+        if onScreen then
+            FOVCircle.Position = Vector2.new(targetPosition.X, targetPosition.Y)
+        else
+            FOVCircle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+        end
+    else
+        FOVCircle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+    end
+
+    if CamlockState and Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) and getgenv().Wraith['Camlock']['Tracer']['Visible'] then
+        local targetPosition, onScreen = Camera:WorldToViewportPoint(Target.Character[getgenv().Wraith.Camlock['Hit']].Position)
+        if onScreen then
+            Tracer.From = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+            Tracer.To = Vector2.new(targetPosition.X, targetPosition.Y)
+            Tracer.Color = getgenv().Wraith['Blatant.cc']['Tracer']['Color']
+            Tracer.Visible = true
+        else
+            Tracer.Visible = false
+        end
+    else
+        Tracer.Visible = false
+    end
+end)
