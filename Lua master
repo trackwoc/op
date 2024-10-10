@@ -237,7 +237,7 @@ local function CreateButton(name, position, callback)
     return Button
 end
 
-local CamlockButton = CreateButton("luascripting.cc", UDim2.new(0.5, -50, 0, 10), function()
+local CamlockButton = CreateButton("blatant.cc", UDim2.new(0.5, -50, 0, 10), function()
     CamlockState = not CamlockState
     if CamlockState then
         Target = GetClosestToCenter()
@@ -255,11 +255,11 @@ local Tracer = Drawing.new("Line")
 Tracer.Thickness = 1
 
 RunService.RenderStepped:Connect(function()
-    FOVCircle.Visible = getgenv().Wraith['luascripting.cc']['Fov']['Visible']
-    FOVCircle.Radius = getgenv().Wraith['luascripting.cc']['Fov']['Radius'] * 3.067
-    FOVCircle.Color = getgenv().Wraith['luascripting.cc']['Fov']['Color']
+    FOVCircle.Visible = getgenv().Wraith['blatant.cc']['Fov']['Visible']
+    FOVCircle.Radius = getgenv().Wraith['blatant.cc']['Fov']['Radius'] * 3.067
+    FOVCircle.Color = getgenv().Wraith['blatant.cc']['Fov']['Color']
     
-    if CamlockState and getgenv().Wraith['luascripting.cc']['Fov']['Stick'] and Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+    if CamlockState and getgenv().Wraith['blatant.cc']['Fov']['Stick'] and Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
         local targetPosition, onScreen = Camera:WorldToViewportPoint(Target.Character[getgenv().Wraith.Camlock['Hit']].Position)
         if onScreen then
             FOVCircle.Position = Vector2.new(targetPosition.X, targetPosition.Y)
