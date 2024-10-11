@@ -1,0 +1,185 @@
+getgenv().Wraith = {
+    ['Camlock'] = {
+        ['Prediction'] = {
+            ['Horizontal'] = 0.1768521,
+            ['Vertical'] = 0.1245678
+        },
+        ['Smoothness'] = {
+            ['Enabled'] = true,
+            ['Amount'] = 0.89
+        },
+        ['Offset'] = {
+            ['Vertical'] = -1
+        },
+        ['Fov'] = {
+            ['Visible'] = true,
+            ['Radius'] = 50,
+            ['Color'] = Color3.new(1, 1, 1),
+            ['Stick'] = true
+        },
+        ['Tracer'] = {
+            ['Visible'] = true,
+            ['Color'] = Color3.new(1, 1, 1)
+        },
+        ['Hit'] = "HumanoidRootPart"
+    }
+}
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CoreGui = game:GetService("CoreGui")
+local Client = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+local CamlockState = false
+local Target = nil
+
+-- Function to check if a player is using anti-aim
+local function CheckAntiAim(player)
+    if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return false end
+    local hrp = player.Character.HumanoidRootPart
+    local velocity = hrp.Velocity.Magnitude
+    return velocity > 70 or velocity < -70 or velocity > 200
+end
+
+-- Function to find the closest player to the center of the screen
+local function GetClosestToCenter()
+    local ClosestPlayer = nil
+    local ShortestDistance = math.huge
+    local CenterScreen = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+
+    for _, Player in pairs(Players:GetPlayers()) do
+        if Player ~= Client and Player.Character and Player.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+            local ScreenPosition, OnScreen = Camera:WorldToScreenPoint(Player.Character[getgenv().Wraith.Camlock['Hit']].Position)
+            if OnScreen then
+                local Distance = (Vector2.new(ScreenPosition.X, ScreenPosition.Y) - CenterScreen).Magnitude
+                if Distance < ShortestDistance and Distance <= getgenv().Wraith['Camlock']['Fov']['Radius'] * 3.067 then
+                    ClosestPlayer = Player
+                    ShortestDistance = Distance
+                end
+            end
+        end
+    end
+    return ClosestPlayer
+end
+
+-- Function to predict the target's future position
+local function PredictPosition(Target)
+    if not Target or not Target.Character then return nil end
+
+    local TargetPart = Target.Character[getgenv().Wraith.Camlock['Hit']]
+    if not TargetPart then return nil end
+
+    local Position = TargetPart.Position
+    local Velocity = TargetPart.Velocity
+
+    if CheckAntiAim(Target) then
+        local humanoid = Target.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            local MoveDirection = humanoid.MoveDirection
+            local walkSpeed = humanoid.WalkSpeed
+            Velocity = MoveDirection * walkSpeed
+            Position = Target.Character.HumanoidRootPart.Position
+        end
+    end
+
+    local Prediction = Target.Character:FindFirstChildOfClass("Humanoid") and 
+                      (Target.Character:FindFirstChildOfClass("Humanoid"):GetState() == Enum.HumanoidStateType.Jumping or
+                      Target.Character:FindFirstChildOfClass("Humanoid"):GetState() == Enum.HumanoidStateType.Freefall) 
+                      and getgenv().Wraith['Camlock']['Prediction']['Vertical'] or 
+                      getgenv().Wraith['Camlock']['Prediction']['Horizontal']
+
+    return Position + (Velocity * Prediction)
+end
+
+-- Function to get the appropriate event for firing
+local function GetEvent()
+    for _, v in pairs(ReplicatedStorage:GetChildren()) do
+        if v.Name:match("MainEvent|Bullets|Remote|MAINEVENT|.gg") then
+            return v
+        end
+    end
+end
+
+-- Function to get arguments based on the place ID
+local function GetArgs()
+    local PlaceId = game.PlaceId
+    local args = {
+        [2788229376] = "UpdateMousePos",
+        [4106313503] = "UpdateMousePos",
+        [11143225577] = "UpdateMousePos",
+        [17319408836] = "UpdateMousePos",
+        [18110728826] = "UpdateMousePos",
+        [5602055394] = "MousePos",
+        [7951883376] = "MousePos",
+        [10100958808] = "MOUSE",
+        [12645617354] = "MOUSE",
+        [14171242539] = "MOUSE",
+        [14412436145] = "MOUSE",
+        [14412355918] = "MOUSE",
+        [14413720089] = "MOUSE",
+        [17403265390] = "MOUSE",
+        [17403166075] = "MOUSE",
+        [17403262882] = "MOUSE",
+        [15186202290] = "MOUSE",
+        [15763494605] = "MOUSE",
+        [9825515356] = "MousePosUpdate",
+        [15166543806] = "MoonUpdateMousePos",
+        [16033173781] = "UpdateMousePosI",
+        [7213786345] = "UpdateMousePosI",
+    }
+    return args[PlaceId] or "UpdateMousePos"
+end
+
+-- Main loop to update the camera and fire server
+RunService.RenderStepped:Connect(function()
+    if CamlockState and Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+        local predictedPosition = PredictPosition(Target)
+        if predictedPosition then
+            local targetPosition = predictedPosition + Vector3.new(0, getgenv().Wraith['Camlock']['Offset']['Vertical'], 0)
+            Camera.CFrame = getgenv().Wraith['Camlock']['Smoothness']['Enabled'] and 
+                            Camera.CFrame:Lerp(CFrame.new(Camera.CFrame.Position, targetPosition), getgenv().Wraith['Camlock']['Smoothness']['Amount']) or 
+                            CFrame.new(Camera.CFrame.Position, targetPosition)
+
+            local Event = GetEvent()
+            if Event then
+                Event:FireServer(GetArgs(), predictedPosition)
+            end
+        end
+    end
+end)
+
+-- Function to handle character additions and tool activations
+local function CharAdded(Character)
+    Character.ChildAdded:Connect(function(Tool)
+        if Tool:IsA("Tool") then
+            Tool.Activated:Connect(function()
+                if CamlockState and Target and Target.Character and Target.Character:FindFirstChild(getgenv().Wraith.Camlock['Hit']) then
+                    local predictedPosition = PredictPosition(Target)
+                    if predictedPosition then
+                        local Event = GetEvent()
+                        if Event then
+                            Event:FireServer(GetArgs(), predictedPosition)
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end
+
+Client.CharacterAdded:Connect(CharAdded)
+if Client.Character then
+    CharAdded(Client.Character)
+end
+
+-- Keybind for toggling Camlock with the "C" key
+UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+    if input.UserInputType == Enum.UserInputType.Keyboard and not gameProcessedEvent then
+        if input.KeyCode == Enum.KeyCode.C then
+            CamlockState = not CamlockState
+            Target = CamlockState and GetClosestToCenter() or nil
+        end
+    end
+end)
